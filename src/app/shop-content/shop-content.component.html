@@ -1,0 +1,49 @@
+<div class="bg">
+
+  <div class="wrapper" *ngIf="choosenProduct">
+    <div class="order">
+      <div class="row row-flex">
+        <div class="col-6">
+          <div class="order-product">
+            <p>
+              <a href=""><img src="{{choosenProduct.imgSrc}}" alt="img" height="100" width="100"></a>
+            </p>
+            <p>Название: {{choosenProduct.name}}</p>
+            <p *ngIf="choosenProduct.price.priceUah">Цена: {{choosenProduct.price.priceUah}} грн</p>
+            <p *ngIf="choosenProduct.price.priceUsd">Цена: {{choosenProduct.price.priceUsd}} usd</p>
+            <p>Описание: {{choosenProduct.description}}</p>
+            <p>Артикул: {{choosenProduct.article}}</p>
+            <p>Категория: {{choosenProduct.category}}</p>
+          </div>
+        </div>
+        <div class="col-6">
+          <form class="order-form" action="#">
+            <fieldset>
+              <h2>Оформить заказ</h2>
+              <input type="email" placeholder="Email">
+              <input type="text" placeholder="Имя">
+              <input type="text" placeholder="Телефон">
+              <textarea name="" id="" cols="30" rows="10" placeholder="Коментарий к заказу..."></textarea>
+              <button>Отправить</button>
+              <button (click)="closeProduct()">Закрыть</button>
+            </fieldset>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--<h3 align="center" font style="color:mediumseagreen">shop-content</h3>-->
+  <div class="row">
+
+    <div class="col-4" *ngFor="let product of products">
+      <p><a href="{{product?.imgSrc}}"><img src="{{product?.imgSrc}}" alt="img" height="100" width="100"></a></p>
+      <p>Название: {{product?.name}}</p>
+      <p *ngIf="product?.price.priceUah">Цена: {{product?.price.priceUah}} грн</p>
+      <p *ngIf="product?.price.priceUsd">Цена: {{product?.price.priceUsd}} usd</p>
+      <p>Описание: {{product?.description}}</p>
+      <p>Артикул: {{product?.article}}</p>
+      <button (click)="choseProduct(product)">Заказать</button>
+      <br><br><br>
+    </div>
+  </div>
+</div>
