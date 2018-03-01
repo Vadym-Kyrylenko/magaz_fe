@@ -12,8 +12,9 @@ import {HeaderComponent} from './header/header.component';
 import {ShopContentComponent} from './shop-content/shop-content.component';
 
 import {AdminComponent} from './admin/admin.component';
-// import {StoreModel} from './store/store.model';
 import {ModelModule} from './store/model.module';
+// import {StoreModel} from './store/store.model';
+import {CommunicationService} from './communication-module/communication.service';
 
 // const homeRoutes: Routes = [
 //   //{ path: '', component: ShopComponent},
@@ -31,7 +32,7 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     AppComponent, ShopComponent, FooterComponent, HeaderComponent, ShopContentComponent,
-    AdminComponent
+    AdminComponent/*, StoreModel*/
   ],
   imports: [
     BrowserModule,
@@ -40,7 +41,7 @@ const appRoutes: Routes = [
     HttpClientModule,
     ModelModule
   ],
-  providers: [],
+  providers: [CommunicationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

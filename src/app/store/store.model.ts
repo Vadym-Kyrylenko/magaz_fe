@@ -1,17 +1,26 @@
-import { Injectable } from '@angular/core';
-import { Product } from './product.model';
-import { StaticDataSource } from './static.datasource';
+import {Injectable} from '@angular/core';
+import {Product} from './product.model';
+// import { StaticDataSource } from './static.datasource';
+import {CommunicationService} from '../communication-module/communication.service';
+import {Observable} from 'rxjs/Observable';
+
 
 @Injectable()
 export class StoreModel {
   private products: Product[];
 
-  constructor(private DataSource: StaticDataSource) {
+  constructor(private DataSource: CommunicationService) {
     this.products = [];
-    this.DataSource.getProducts().forEach(product => this.products.push(product));
   }
 
   getProducts() {
-    return this.products;
+    return new Observable(observer => {
+      this.DataSource.getData().subscribe((data: Product[]) => {
+        console.dir(data);
+        this.products = data;
+        observer.next(data);
+        observer.complete();
+      });
+    });
   }
 }

@@ -3,7 +3,6 @@ import {Product} from '../store/product.model';
 import {HttpService} from '../http.service';
 import {StoreModel} from '../store/store.model';
 
-
 @Component({
   selector: 'app-shop-content',
   templateUrl: './shop-content.component.html',
@@ -18,13 +17,15 @@ export class ShopContentComponent implements OnInit {
     this.choosenProduct = null;
   }
 
-  ngOnInit() {
-      this.getProducts();
-    // this.http.get('products.json').subscribe((data:Product) => this.product=data);
-    // this.httpService.getData().subscribe(data => this.products = data['productList']);
+  ngOnInit () {
+    this.getProducts();
   }
+
   getProducts() {
-    this.products = this.storeService.getProducts();
+     this.storeService.getProducts().subscribe((data: Product[]) => {
+      console.dir(data);
+      this.products = data;
+    });
   }
 
   choseProduct(product) {
