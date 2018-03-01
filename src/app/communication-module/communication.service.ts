@@ -1,5 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
+import {Order} from '../store/order.model';
+import {Product} from '../store/product.model';
 
 
 @Injectable()
@@ -10,8 +12,7 @@ export class CommunicationService {
   getData() {
     return this.http.get('http://localhost:3000/products');
   }
- /* postData(order: Order) {
-    const body = {};
-    return this.http.post('http://localhost:3000/products', body);
-  }*/
+  postOrders(order: Order) {
+    return this.http.post('http://localhost:3000/orders', Order);
+  }
 }
