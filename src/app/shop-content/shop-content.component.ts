@@ -56,6 +56,4 @@ export class ShopContentComponent implements OnInit {
       this.orders = data;
     });
   }*/
-
-
 }
