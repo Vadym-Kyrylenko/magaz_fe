@@ -27,12 +27,12 @@ export class StoreModel {
     });
   }
 
-  postOrders(orders: Order) {
+ /* postOrders(orders: Order) {
     return new Observable(observer => {
       this.DataSource.postOrders(orders).subscribe((data: Order[]) => {
         console.dir(data);
         this.orders = data;
       });
     });
-  }
+  }*/
 }

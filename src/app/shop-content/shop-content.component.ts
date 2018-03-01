@@ -50,12 +50,12 @@ export class ShopContentComponent implements OnInit {
     this.orders.push(new Order (nameCustomer, email, phone, textOrder, name, priceUah, priceUsd, description, article, category));
   }*/
 
-  postOrders(orders: Order) {
+  /*postOrders(orders: Order) {
     this.storeService.postOrders(orders).subscribe((data: Order[]) => {
       console.dir(data);
       this.orders = data;
     });
-  }
+  }*/
 
 
 }
