@@ -2,14 +2,19 @@ import { Routes, RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {HttpClientModule} from '@angular/common/http';
+
 import { AppComponent } from './app.component';
-import {ShopComponent} from "./shop/shop.component";
-import {FooterComponent} from "./footer/footer.component";
-import {HeaderComponent} from "./header/header.component";
-import {ShopContentComponent} from "./shop-content/shop-content.component";
+import {ShopComponent} from './shop/shop.component';
+import {FooterComponent} from './footer/footer.component';
+import {HeaderComponent} from './header/header.component';
+import {ShopContentComponent} from './shop-content/shop-content.component';
 
-import { AdminComponent} from "./admin/admin.component";
-
+import {AdminComponent} from './admin/admin.component';
+import {ModelModule} from './store/model.module';
+// import {StoreModel} from './store/store.model';
+import {CommunicationService} from './communication-module/communication.service';
 
 // const homeRoutes: Routes = [
 //   //{ path: '', component: ShopComponent},
@@ -19,21 +24,24 @@ import { AdminComponent} from "./admin/admin.component";
 // ];
 
 const appRoutes: Routes = [
-  { path: '', component: ShopComponent},
+  { path: './', component: ShopComponent},
   { path: 'admin', component: AdminComponent},
-  { path: '**', redirectTo: '' }
+  { path: '**', redirectTo: './' }
 ];
 
 @NgModule({
   declarations: [
     AppComponent, ShopComponent, FooterComponent, HeaderComponent, ShopContentComponent,
-    AdminComponent
+    AdminComponent/*, StoreModel*/
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    NgbModule.forRoot(),
+    HttpClientModule,
+    ModelModule
   ],
-  providers: [],
+  providers: [CommunicationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

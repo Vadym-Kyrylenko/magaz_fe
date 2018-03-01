@@ -1,0 +1,108 @@
+.bg{
+  background-image: url("../images/background_black.jpg");
+  max-width: 100%;
+  max-height: 100%;
+  background-size: 100% 100%;
+  padding-bottom: 5px;
+  color: white;
+  line-height: 10px;
+}
+button{
+  display: block;
+  width: 115px;
+  text-transform: uppercase;
+  color: #fff;
+  border-radius: 2px;
+  padding: 0;
+  font-size: 18px;
+  border: 0;
+  line-height: 26px;
+  margin: 0 auto;
+  background: #eca22e;
+  cursor: pointer;
+}
+button:hover{
+  opacity: 0.7;
+  color: green;
+}
+.wrapper{
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(255,255,255, 0.5);
+  z-index: 10;
+}
+.order{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  color: #000;
+}
+.order-form{
+  /*width: 445px;*/
+  padding: 20px 40px 40px;
+  background: white;
+  border-radius: 8px;
+  position: absolute;
+  top: 50%;
+  left:25%;
+  transform: translate(-50%, -50%);
+}
+.order-form h2{
+  margin: 0 0 20px;
+  color: dimgrey;
+  text-align: center;
+}
+.order-form input[type=text],
+.order-form input[type=email],
+.order-form select,
+.order-form textarea{
+  display: block;
+  width: 100%;
+  background: #f9f6f0;
+  border: 0;
+  padding: 13px 20px;
+  margin: 0 0 20px;
+  color: #000;
+  font-size: 16px;
+  line-height: 21px;
+  font-style: italic;
+  border-radius: 3px;
+}
+.order-form textarea{
+  height: 150px;
+  max-height: 300px;
+  min-height: 50px;
+  resize: vertical;
+}
+.order-product{
+  height: 515px;
+  /*width: 445px;*/
+  padding: 20px 40px 40px;
+  background: white;
+  border-radius: 8px;
+  position: absolute;
+  z-index: 10;
+  top: 50%;
+  left:50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+fieldset button{
+  display: inline-block;
+  float: right;
+  margin-right: 40px;
+}
+
+
+/*
+.product{
+  margin-left: 10%;
+  margin-bottom: 5%;
+  margin-top: 10px;
+}
+*/
