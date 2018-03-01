@@ -15,6 +15,7 @@ import {AdminComponent} from './admin/admin.component';
 import {ModelModule} from './store/model.module';
 // import {StoreModel} from './store/store.model';
 import {CommunicationService} from './communication-module/communication.service';
+import { FormsModule } from '@angular/forms';
 
 // const homeRoutes: Routes = [
 //   //{ path: '', component: ShopComponent},
@@ -22,7 +23,6 @@ import {CommunicationService} from './communication-module/communication.service
 //   // { path: 'contacts', component: ContactsComponent}
 //   // { path: 'callbackbtn', component: CallBackComponent},
 // ];
-
 const appRoutes: Routes = [
   { path: './', component: ShopComponent},
   { path: 'admin', component: AdminComponent},
@@ -39,6 +39,7 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     NgbModule.forRoot(),
     HttpClientModule,
+    FormsModule,
     ModelModule
   ],
   providers: [CommunicationService],

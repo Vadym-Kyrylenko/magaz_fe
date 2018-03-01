@@ -1,5 +1,4 @@
 <div class="bg">
-
   <div class="wrapper" *ngIf="choosenProduct">
     <div class="order">
       <div class="row row-flex">
@@ -20,11 +19,13 @@
           <form class="order-form" action="#">
             <fieldset>
               <h2>Оформить заказ</h2>
-             <!-- <input type="text" placeholder="Имя" name="name" [(ngModel)]="orders.nameCustomer">
-              <input type="email" placeholder="Email" name="email" [(ngModel)]="orders.email">
-              <input type="text" placeholder="Телефон" name="phone" [(ngModel)]="orders.phone">
-              <textarea name="textOrder" id="" cols="30" rows="10" placeholder="Коментарий к заказу..." [(ngModel)]="orders.textOrder"></textarea>-->
-              <button (click)="submit(addOrder())">Отправить</button>
+              <input type="text" placeholder="Имя" name="name" [(ngModel)]="orderContacts.nameCustomer">
+              <input type="email" placeholder="Email" name="email" [(ngModel)]="orderContacts.email">
+              <input type="text" placeholder="Телефон" name="phone" [(ngModel)]="orderContacts.phone">
+              <textarea name="textOrder" id="" cols="30" rows="10"
+                        placeholder="Коментарий к заказу..."
+                        [(ngModel)]="orderContacts.textOrder"></textarea>
+              <button (click)="addOrder()">Отправить</button>
               <button (click)="closeProduct()">Закрыть</button>
             </fieldset>
           </form>
