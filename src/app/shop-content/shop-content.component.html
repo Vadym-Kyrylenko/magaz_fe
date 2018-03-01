@@ -20,11 +20,11 @@
           <form class="order-form" action="#">
             <fieldset>
               <h2>Оформить заказ</h2>
-              <input type="email" placeholder="Email">
-              <input type="text" placeholder="Имя">
-              <input type="text" placeholder="Телефон">
-              <textarea name="" id="" cols="30" rows="10" placeholder="Коментарий к заказу..."></textarea>
-              <button>Отправить</button>
+             <!-- <input type="text" placeholder="Имя" name="name" [(ngModel)]="orders.nameCustomer">
+              <input type="email" placeholder="Email" name="email" [(ngModel)]="orders.email">
+              <input type="text" placeholder="Телефон" name="phone" [(ngModel)]="orders.phone">
+              <textarea name="textOrder" id="" cols="30" rows="10" placeholder="Коментарий к заказу..." [(ngModel)]="orders.textOrder"></textarea>-->
+              <button (click)="submit(addOrder())">Отправить</button>
               <button (click)="closeProduct()">Закрыть</button>
             </fieldset>
           </form>
@@ -34,8 +34,7 @@
   </div>
   <!--<h3 align="center" font style="color:mediumseagreen">shop-content</h3>-->
   <div class="row">
-
-    <div class="col-4" *ngFor="let product of products">
+    <div class="col-4 product" *ngFor="let product of products">
       <p><a href="{{product?.imgSrc}}"><img src="{{product?.imgSrc}}" alt="img" height="100" width="100"></a></p>
       <p>Название: {{product?.name}}</p>
       <p *ngIf="product?.price.priceUah">Цена: {{product?.price.priceUah}} грн</p>

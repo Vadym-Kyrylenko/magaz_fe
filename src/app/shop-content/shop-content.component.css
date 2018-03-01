@@ -43,7 +43,7 @@ button:hover{
   color: #000;
 }
 .order-form{
-  width: 445px;
+  /*width: 445px;*/
   padding: 20px 40px 40px;
   background: white;
   border-radius: 8px;
@@ -81,7 +81,7 @@ button:hover{
 }
 .order-product{
   height: 515px;
-  width: 445px;
+  /*width: 445px;*/
   padding: 20px 40px 40px;
   background: white;
   border-radius: 8px;
@@ -97,3 +97,12 @@ fieldset button{
   float: right;
   margin-right: 40px;
 }
+
+
+/*
+.product{
+  margin-left: 10%;
+  margin-bottom: 5%;
+  margin-top: 10px;
+}
+*/
