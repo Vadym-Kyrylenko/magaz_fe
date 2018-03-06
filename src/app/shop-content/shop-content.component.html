@@ -1,11 +1,11 @@
 <div class="bg">
-  <div class="wrapper" *ngIf="choosenProduct">
+  <div class="wrapper" *ngIf="choosenProduct" (click)="fgh($event)">
     <div class="order">
       <div class="row row-flex">
         <div class="col-6">
           <div class="order-product">
             <p>
-              <a href=""><img src="{{choosenProduct.imgSrc}}" alt="img" height="100" width="100"></a>
+              <a href="{{choosenProduct.imgSrc}}"><img src="{{choosenProduct.imgSrc}}" alt="img" height="100" width="100"></a>
             </p>
             <p>Название: {{choosenProduct.name}}</p>
             <p *ngIf="choosenProduct.price.priceUah">Цена: {{choosenProduct.price.priceUah}} грн</p>
@@ -29,6 +29,12 @@
               <button (click)="closeProduct()">Закрыть</button>
             </fieldset>
           </form>
+        </div>
+        <div *ngIf="done" class="order-answer">
+          <h2>{{orderContacts.nameCustomer}}, Ваш заказ на {{choosenProduct.name}} принят!</h2>
+          <p>В ближайщее время с Вами свяжется наш менеджер.</p>
+
+
         </div>
       </div>
     </div>

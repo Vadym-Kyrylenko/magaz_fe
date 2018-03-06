@@ -13,7 +13,12 @@ export class CommunicationService {
     return this.http.get('http://localhost:3000/products');
   }
   postOrders(order: any) {
-    console.log(order)
+    // console.log(order);
+    // return this.http.post('http://localhost:3000/orders', {order: order});
     return this.http.post('http://localhost:3000/orders', order);
+  }
+
+  getOrders() {
+    return this.http.get('http://localhost:3000/orders');
   }
 }

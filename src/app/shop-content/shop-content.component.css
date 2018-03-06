@@ -32,7 +32,7 @@ button:hover{
   left: 0;
   right: 0;
   background: rgba(255,255,255, 0.5);
-  z-index: 10;
+  z-index: 1050;
 }
 .order{
   position: absolute;
@@ -41,9 +41,10 @@ button:hover{
   transform: translate(-50%, -50%);
   width: 80%;
   color: #000;
+
 }
 .order-form{
-  /*width: 445px;*/
+  width: 445px;
   padding: 20px 40px 40px;
   background: white;
   border-radius: 8px;
@@ -51,6 +52,7 @@ button:hover{
   top: 50%;
   left:25%;
   transform: translate(-50%, -50%);
+  z-index: 20;
 }
 .order-form h2{
   margin: 0 0 20px;
@@ -81,12 +83,12 @@ button:hover{
 }
 .order-product{
   height: 515px;
-  /*width: 445px;*/
+  width: 445px;
   padding: 20px 40px 40px;
   background: white;
   border-radius: 8px;
   position: absolute;
-  z-index: 10;
+  z-index: 20;
   top: 50%;
   left:50%;
   transform: translate(-50%, -50%);
@@ -98,7 +100,14 @@ fieldset button{
   margin-right: 40px;
 }
 
-
+.order-answer{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  color: #000;
+}
 /*
 .product{
   margin-left: 10%;

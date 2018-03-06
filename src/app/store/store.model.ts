@@ -19,7 +19,7 @@ export class StoreModel {
   getProducts() {
     return new Observable(observer => {
       this.DataSource.getData().subscribe((data: Product[]) => {
-        console.dir(data);
+        // console.dir(data);
         this.products = data;
         observer.next(data);
         observer.complete();
@@ -35,4 +35,14 @@ export class StoreModel {
       });
     });
   }*/
+  getOrders() {
+    return new Observable(observer => {
+      this.DataSource.getOrders().subscribe((data: Order[]) => {
+        // console.dir(data);
+        this.orders = data;
+        observer.next(data);
+        observer.complete();
+      });
+    });
+  }
 }

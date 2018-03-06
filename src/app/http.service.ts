@@ -9,4 +9,8 @@ export class HttpService {
   getData() {
       return this.http.get('http://localhost:3000');
   }
+
+  getOrders() {
+    return this.http.get('http://localhost:3000/orders');
+  }
 }

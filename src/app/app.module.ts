@@ -12,6 +12,7 @@ import {HeaderComponent} from './header/header.component';
 import {ShopContentComponent} from './shop-content/shop-content.component';
 
 import {AdminComponent} from './admin/admin.component';
+import {OrdersAdminComponent} from './admin/orders-admin/orders-admin.component';
 import {ModelModule} from './store/model.module';
 // import {StoreModel} from './store/store.model';
 import {CommunicationService} from './communication-module/communication.service';
@@ -32,7 +33,7 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     AppComponent, ShopComponent, FooterComponent, HeaderComponent, ShopContentComponent,
-    AdminComponent/*, StoreModel*/
+    AdminComponent/*, StoreModel*/, OrdersAdminComponent
   ],
   imports: [
     BrowserModule,

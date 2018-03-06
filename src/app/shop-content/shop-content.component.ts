@@ -2,9 +2,9 @@ import {Component, OnInit} from '@angular/core';
 import {Product} from '../store/product.model';
 import {HttpService} from '../http.service';
 import {StoreModel} from '../store/store.model';
-// import {Order} from '../store/order.model';
 import {IOrderContacts} from '../interfaces/all.interfaces';
 import {CommunicationService} from '../communication-module/communication.service';
+
 
 @Component({
   selector: 'app-shop-content',
@@ -14,16 +14,14 @@ import {CommunicationService} from '../communication-module/communication.servic
 })
 export class ShopContentComponent implements OnInit {
   products: Product[] = [];
-  // order: Order = new Order();
   orderContacts: IOrderContacts;
   choosenProduct: Product;
-  // choosenOrder: Order;
-  // done = false;
-  // receivedOrder: Order;
+
+  done = false;
+
   constructor(private httpService: CommunicationService,
               private storeModel: StoreModel) {
     this.choosenProduct = null;
-    // this.choosenOrder = null;
     this.orderContacts = {
       nameCustomer: '',
       email: '',
@@ -34,12 +32,10 @@ export class ShopContentComponent implements OnInit {
 
   ngOnInit() {
     this.getProducts();
-    // this.postOrders();
   }
 
   getProducts() {
     this.storeModel.getProducts().subscribe((data: Product[]) => {
-      // console.dir(data);
       this.products = data;
     });
   }
@@ -52,24 +48,22 @@ export class ShopContentComponent implements OnInit {
     this.choosenProduct = null;
   }
 
-  /*addOrder(orders.nameCustomer: string, orders.email: string, orders.phone: string, orders.textOrder: string, name: string,
-  priceUah: number, priceUsd: number, description: string,
-  article: string, category: string) {
-    this.orders.push(new Order (nameCustomer, email, phone, textOrder, name, priceUah, priceUsd, description, article, category));
-  }*/
   addOrder() {
-    const order = Object.assign(this.orderContacts, this.choosenProduct); /*{
-      contacts: this.orderContacts,
-      product: this.choosenProduct
-      };*/
-
-    // console.dir(order);
+    const order = Object.assign(this.orderContacts, this.choosenProduct);
     this.postOrders(order);
+    this.closeProduct();
   }
   postOrders(order: any) {
     this.httpService.postOrders(order).subscribe((data: any) => {
-      console.dir(data);
+      console.log(this.done);
+      this.done = true;
+      // console.dir(data);
       // this.orders = data;
     });
+  }
+  fgh(event) {
+    if (event.path[0].className === 'wrapper') {
+      this.closeProduct();
+    }
   }
 }
