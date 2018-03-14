@@ -12,6 +12,12 @@ export class CommunicationService {
   getData() {
     return this.http.get('http://localhost:3000/products');
   }
+
+  postProduct(product: any) {
+    console.log(product);
+    return this.http.post('http://localhost:3000/products', product);
+  }
+
   postOrders(order: any) {
     // console.log(order);
     // return this.http.post('http://localhost:3000/orders', {order: order});
@@ -20,5 +26,15 @@ export class CommunicationService {
 
   getOrders() {
     return this.http.get('http://localhost:3000/orders');
+  }
+
+  deleteOrders(order) {
+    console.log(order);
+    return this.http.delete('http://localhost:3000/orders/' + order);
+  }
+
+  deleteProducts(product) {
+    console.log(product);
+    return this.http.delete('http://localhost:3000/products/' + product);
   }
 }

@@ -101,13 +101,35 @@ fieldset button{
 }
 
 .order-answer{
-  position: absolute;
+  text-align: center;
+  position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 80%;
   color: #000;
+  z-index: 1049;
+  background: aquamarine;
 }
+.order-answer error{
+  background: red;
+  color: black;
+}
+.order-answer button{
+  display: block;
+  width: 100px;
+  text-transform: uppercase;
+  color: #fff;
+  border-radius: 3px;
+  padding: 0;
+  font-size: 18px;
+  border: 0;
+  line-height: 26px;
+  margin: 0 auto;
+  background: coral;
+  cursor: pointer;
+}
+
 /*
 .product{
   margin-left: 10%;

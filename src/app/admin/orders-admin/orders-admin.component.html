@@ -15,6 +15,7 @@
         <p>Email заказчика: {{order?.email}}</p>
         <p>Телефон заказчика: {{order?.phone}}</p>
         <p>Коментарий к заказу: {{order?.textOrder}}</p>
+        <button (click)="deleteOrder(order._id)">Удалить</button>
         <button (click)="choseOrder(order)">Просмотреть</button>
         <br><br><br>
       </div>
@@ -36,6 +37,7 @@
             <p>Артикул: {{choosenOrder.article}}</p>
             <p>Категория: {{choosenOrder.category}}</p>
             <button (click)="closeOrder()">Закрыть</button>
+
         </div>
       <!--</div>-->
     </div>

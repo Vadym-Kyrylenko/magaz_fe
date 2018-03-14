@@ -30,26 +30,32 @@
             </fieldset>
           </form>
         </div>
-        <div *ngIf="done" class="order-answer">
-          <h2>{{orderContacts.nameCustomer}}, Ваш заказ на {{choosenProduct.name}} принят!</h2>
-          <p>В ближайщее время с Вами свяжется наш менеджер.</p>
-
-
-        </div>
       </div>
     </div>
   </div>
-  <!--<h3 align="center" font style="color:mediumseagreen">shop-content</h3>-->
-  <div class="row">
-    <div class="col-4 product" *ngFor="let product of products">
-      <p><a href="{{product?.imgSrc}}"><img src="{{product?.imgSrc}}" alt="img" height="100" width="100"></a></p>
-      <p>Название: {{product?.name}}</p>
-      <p *ngIf="product?.price.priceUah">Цена: {{product?.price.priceUah}} грн</p>
-      <p *ngIf="product?.price.priceUsd">Цена: {{product?.price.priceUsd}} usd</p>
-      <p>Описание: {{product?.description}}</p>
-      <p>Артикул: {{product?.article}}</p>
-      <button (click)="choseProduct(product)">Заказать</button>
-      <br><br><br>
+  <div class="wrapper-for-order-answer">
+    <div *ngIf="done === true" class="order-answer">
+      <div *ngIf="feedback.mess === 1">
+        <h2>{{feedback.order.nameCustomer}}, Ваш заказ на {{feedback.order.name}} принят!</h2>
+        <p>В ближайщее время с Вами свяжется наш менеджер.</p>
+      </div>
+      <div *ngIf="feedback.mess === 2">
+        <p class="error">Что-то пошло не так. Пожалуйста, повторите Ваш заказ снова!</p>
+      </div>
+      <button (click)="closeOrderAnswer()">Закрыть</button>
+    </div>
+    <!--<h3 align="center" font style="color:mediumseagreen">shop-content</h3>-->
+    <div class="row">
+      <div class="col-4 product" *ngFor="let product of products">
+        <p><a href="{{product?.imgSrc}}"><img src="{{product?.imgSrc}}" alt="img" height="100" width="100"></a></p>
+        <p>Название: {{product?.name}}</p>
+        <p *ngIf="product?.price.priceUah">Цена: {{product?.price.priceUah}} грн</p>
+        <p *ngIf="product?.price.priceUsd">Цена: {{product?.price.priceUsd}} usd</p>
+        <p>Описание: {{product?.description}}</p>
+        <p>Артикул: {{product?.article}}</p>
+        <button (click)="choseProduct(product)">Заказать</button>
+        <br><br><br>
+      </div>
     </div>
   </div>
 </div>

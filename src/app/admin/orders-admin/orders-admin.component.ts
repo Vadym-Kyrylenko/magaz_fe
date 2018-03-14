@@ -38,4 +38,11 @@ export class OrdersAdminComponent implements OnInit {
     this.choosenOrder = null;
   }
 
+  deleteOrder(order) {
+      console.log(order);
+      this.httpService.deleteOrders(order).subscribe((data: any) => {
+        console.log(data);
+        this.orders = data.orders;
+      });
+  }
 }
