@@ -2,7 +2,9 @@ import {Component, OnInit} from '@angular/core';
 import {Product} from '../store/product.model';
 import {HttpService} from '../http.service';
 import {StoreModel} from '../store/store.model';
-import {Order} from '../store/order.model';
+import {IOrderContacts} from '../interfaces/all.interfaces';
+import {CommunicationService} from '../communication-module/communication.service';
+
 
 @Component({
   selector: 'app-shop-content',
@@ -12,27 +14,34 @@ import {Order} from '../store/order.model';
 })
 export class ShopContentComponent implements OnInit {
   products: Product[] = [];
-  // order: Order = new Order();
-  orders: Order [] = [];
+  orderContacts: IOrderContacts;
   choosenProduct: Product;
-  choosenOrder: Order;
-  done = false;
-  receivedOrder: Order;
+  feedback: any;
+  done   = false;
+  // mess = null;
 
-  constructor(private storeService: StoreModel) {
+  constructor(private httpService: CommunicationService,
+              private storeModel: StoreModel) {
     this.choosenProduct = null;
-    this.choosenOrder = null;
+    this.feedback = {
+      mess: null
+    },
+    this.orderContacts = {
+      nameCustomer: '',
+      email: '',
+      phone: '',
+      textOrder: ''
+    };
   }
 
   ngOnInit() {
     this.getProducts();
-    // this.postOrders();
   }
 
   getProducts() {
-    this.storeService.getProducts().subscribe((data: Product[]) => {
-      console.dir(data);
+    this.storeModel.getProducts().subscribe((data: Product[]) => {
       this.products = data;
+      console.dir(this.products);
     });
   }
 
@@ -44,16 +53,30 @@ export class ShopContentComponent implements OnInit {
     this.choosenProduct = null;
   }
 
-  /*addOrder(orders.nameCustomer: string, orders.email: string, orders.phone: string, orders.textOrder: string, name: string,
-  priceUah: number, priceUsd: number, description: string,
-  article: string, category: string) {
-    this.orders.push(new Order (nameCustomer, email, phone, textOrder, name, priceUah, priceUsd, description, article, category));
-  }*/
+  addOrder() {
+    const order = Object.assign(this.orderContacts, this.choosenProduct);
+    this.postOrders(order);
+    this.closeProduct();
+  }
+  postOrders(order: any) {
+    this.httpService.postOrders(order).subscribe((data: any) => {
+      this.done = true;
+      console.log(this.done);
 
-  /*postOrders(orders: Order) {
-    this.storeService.postOrders(orders).subscribe((data: Order[]) => {
-      console.dir(data);
-      this.orders = data;
+      if (data.message === 'Order saved') {
+        this.feedback.mess = 1;
+        this.feedback.order = data.order;
+      } else if (data.message === 'Order not created') {
+        this.feedback.mess = 2;
+      }
     });
-  }*/
+  }
+  fgh(event) {
+    if (event.path[0].className === 'wrapper') {
+      this.closeProduct();
+    }
+  }
+  closeOrderAnswer() {
+    this.done = false;
+  }
 }

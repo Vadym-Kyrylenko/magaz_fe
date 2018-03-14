@@ -1,12 +1,11 @@
-
 <div class="bg">
-  <div class="wrapper" *ngIf="choosenProduct">
+  <div class="wrapper" *ngIf="choosenProduct" (click)="fgh($event)">
     <div class="order">
       <div class="row row-flex">
         <div class="col-6">
           <div class="order-product">
             <p>
-              <a href=""><img src="{{choosenProduct.imgSrc}}" alt="img" height="100" width="100"></a>
+              <a href="{{choosenProduct.imgSrc}}"><img src="{{choosenProduct.imgSrc}}" alt="img" height="100" width="100"></a>
             </p>
             <p>Название: {{choosenProduct.name}}</p>
             <p *ngIf="choosenProduct.price.priceUah">Цена: {{choosenProduct.price.priceUah}} грн</p>
@@ -20,14 +19,20 @@
           <form class="order-form" action="#">
             <fieldset>
               <h2>Оформить заказ</h2>
-             <!-- <input type="text" placeholder="Имя" name="name" [(ngModel)]="orders.nameCustomer">
-              <input type="email" placeholder="Email" name="email" [(ngModel)]="orders.email">
-              <input type="text" placeholder="Телефон" name="phone" [(ngModel)]="orders.phone">
-              <textarea name="textOrder" id="" cols="30" rows="10" placeholder="Коментарий к заказу..." [(ngModel)]="orders.textOrder"></textarea>-->
-              <button (click)="submit(addOrder())">Отправить</button>
+              <input type="text" placeholder="Имя" name="name" [(ngModel)]="orderContacts.nameCustomer">
+              <input type="email" placeholder="Email" name="email" [(ngModel)]="orderContacts.email">
+              <input type="text" placeholder="Телефон" name="phone" [(ngModel)]="orderContacts.phone">
+              <textarea name="textOrder" id="" cols="30" rows="10"
+                        placeholder="Коментарий к заказу..."
+                        [(ngModel)]="orderContacts.textOrder"></textarea>
+              <button (click)="addOrder()">Отправить</button>
               <button (click)="closeProduct()">Закрыть</button>
             </fieldset>
           </form>
+        </div>
+        <div *ngIf="done" class="order-answer">
+          <h2>{{orderContacts.nameCustomer}}, Ваш заказ на {{choosenProduct.name}} принят!</h2>
+          <p>В ближайщее время с Вами свяжется наш менеджер.</p>
         </div>
       </div>
     </div>
