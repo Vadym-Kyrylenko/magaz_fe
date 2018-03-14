@@ -16,12 +16,16 @@ export class ShopContentComponent implements OnInit {
   products: Product[] = [];
   orderContacts: IOrderContacts;
   choosenProduct: Product;
-
-  done = false;
+  feedback: any;
+  done   = false;
+  // mess = null;
 
   constructor(private httpService: CommunicationService,
               private storeModel: StoreModel) {
     this.choosenProduct = null;
+    this.feedback = {
+      mess: null
+    },
     this.orderContacts = {
       nameCustomer: '',
       email: '',
@@ -37,6 +41,7 @@ export class ShopContentComponent implements OnInit {
   getProducts() {
     this.storeModel.getProducts().subscribe((data: Product[]) => {
       this.products = data;
+      console.dir(this.products);
     });
   }
 
@@ -55,15 +60,23 @@ export class ShopContentComponent implements OnInit {
   }
   postOrders(order: any) {
     this.httpService.postOrders(order).subscribe((data: any) => {
-      console.log(this.done);
       this.done = true;
-      // console.dir(data);
-      // this.orders = data;
+      console.log(this.done);
+
+      if (data.message === 'Order saved') {
+        this.feedback.mess = 1;
+        this.feedback.order = data.order;
+      } else if (data.message === 'Order not created') {
+        this.feedback.mess = 2;
+      }
     });
   }
   fgh(event) {
     if (event.path[0].className === 'wrapper') {
       this.closeProduct();
     }
+  }
+  closeOrderAnswer() {
+    this.done = false;
   }
 }
