@@ -11,13 +11,21 @@
       <h1>АВТОРИЗАЦИЯ</h1>
       <fieldset>
         <form action="javascript:void(0);" method="get">
+          <input type="email" name="email" placeholder="Введите Ваш email адрес..." required [(ngModel)]="user.email" />
+          <input type="password" name="password" placeholder="Ваш сложный пароль..." required [(ngModel)]="user.password" />
+          <button onclick="location.href='/registration'">Регистрация</button><button (click)="logIn()">Войти</button>
+        </form>
+      </fieldset>
+
+      <!--<fieldset>
+        <form action="javascript:void(0);" method="get">
           <input type="email" name="email" required value="Логин" onBlur="if(this.value=='')this.value='Логин'"
                  onFocus="if(this.value=='Логин')this.value='' " [(ngModel)]="user.email">
           <input type="password" name="password" required value="Пароль" onBlur="if(this.value=='')this.value='Пароль'"
                  onFocus="if(this.value=='Пароль')this.value='' " [(ngModel)]="user.password">
-          <button (click)="logIn()">Войти</button>
+          <button onclick="location.href='/registration'">Регистрация</button><button (click)="logIn()">Войти</button>
         </form>
-      </fieldset>
+      </fieldset>-->
     </div>
   </div>
 </div>

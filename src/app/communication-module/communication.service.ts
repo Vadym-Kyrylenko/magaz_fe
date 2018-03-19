@@ -1,40 +1,74 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-// import {Order} from '../store/order.model';
-import {Product} from '../store/product.model';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {User} from '../login/login.component';
 
 
 @Injectable()
 export class CommunicationService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
   getData() {
     return this.http.get('http://localhost:3000/products');
   }
 
-  postProduct(product: any) {
-    console.log(product);
-    return this.http.post('http://localhost:3000/products', product);
+  postProduct(product: any, jwttoken: string) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + jwttoken
+      })
+    };
+    return this.http.post('http://localhost:3000/products', product, httpOptions);
   }
 
-  postOrders(order: any) {
-    // console.log(order);
-    // return this.http.post('http://localhost:3000/orders', {order: order});
-    return this.http.post('http://localhost:3000/orders', order);
+  postOrders(order: any, jwttoken: string) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + jwttoken
+      })
+    };
+    return this.http.post('http://localhost:3000/orders', order, httpOptions);
   }
 
-  getOrders() {
-    return this.http.get('http://localhost:3000/orders');
+  getOrders(jwttoken: string) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + jwttoken
+      })
+    };
+    return this.http.get('http://localhost:3000/orders', httpOptions);
   }
 
-  deleteOrders(order) {
-    console.log(order);
-    return this.http.delete('http://localhost:3000/orders/' + order);
+  deleteOrders(order: any, jwttoken: string) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + jwttoken
+      })
+    };
+    return this.http.delete('http://localhost:3000/orders/' + order, httpOptions);
   }
 
-  deleteProducts(product) {
-    console.log(product);
-    return this.http.delete('http://localhost:3000/products/' + product);
+  deleteProducts(product: any, jwttoken: string) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + jwttoken
+      })
+    };
+    return this.http.delete('http://localhost:3000/products/' + product, httpOptions);
+  }
+
+  logIn(user: User) {
+    return this.http.post('http://localhost:3000/login/', user);
+  }
+
+  regUser(user) {
+    console.log(user);
+    return this.http.post('http://localhost:3000/register/', user);
   }
 }

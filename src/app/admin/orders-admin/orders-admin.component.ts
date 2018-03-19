@@ -25,6 +25,7 @@ export class OrdersAdminComponent implements OnInit {
   }
 
   getOrders() {
+    const token = localStorage.getItem('token');
     this.storeModel.getOrders().subscribe((data: Order[]) => {
       this.orders = data;
     });
@@ -40,7 +41,8 @@ export class OrdersAdminComponent implements OnInit {
 
   deleteOrder(order) {
       console.log(order);
-      this.httpService.deleteOrders(order).subscribe((data: any) => {
+    const token = localStorage.getItem('token');
+      this.httpService.deleteOrders(order, token).subscribe((data: any) => {
         console.log(data);
         this.orders = data.orders;
       });

@@ -13,7 +13,6 @@ export class ProductsAdminComponent implements OnInit {
   choosenProduct: Product;
   feedback: any;
   done   = false;
-  // mess = null;
   newProduct: Product;
 
   constructor(private httpService: CommunicationService,
@@ -60,9 +59,8 @@ export class ProductsAdminComponent implements OnInit {
   }
 
   postProduct(products: any) {
-
-    console.dir(products);
-    this.httpService.postProduct(products).subscribe((data: any) => {
+    const token = localStorage.getItem('token');
+    this.httpService.postProduct(products, token).subscribe((data: any) => {
       this.done = true;
       // console.log(this.done);
 
@@ -86,7 +84,8 @@ export class ProductsAdminComponent implements OnInit {
 
   deleteProduct(product) {
     console.log(product);
-    this.httpService.deleteProducts(product).subscribe((data: any) => {
+    const token = localStorage.getItem('token');
+    this.httpService.deleteProducts(product, token).subscribe((data: any) => {
       console.log(data);
       this.products = data.products;
     });

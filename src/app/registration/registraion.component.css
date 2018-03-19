@@ -58,9 +58,16 @@ body {
   position: center;
 }
 
-#login-form fieldset form input[type="email"] {
+#login-form fieldset form input[type="text"] {
   border: 1px solid #292829;
   border-radius: 3px 3px 0px 0px;
+  padding: 12px 10px;
+  width: 260px;
+}
+
+#login-form fieldset form input[type="email"] {
+  border: 1px solid #292829;
+  /*border-radius: 3px 3px 0px 0px;*/
   padding: 12px 10px;
   width: 260px;
 }

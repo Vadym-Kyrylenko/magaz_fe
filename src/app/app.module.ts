@@ -20,6 +20,8 @@ import {CommunicationService} from './communication-module/communication.service
 import { FormsModule } from '@angular/forms';
 import {AdminGuard} from './admin/admin.guard';
 import {LoginComponent} from './login/login.component';
+import {RegistrationComponent} from './registration/registration.component';
+
 // import {StoreModel} from './store/store.model';
 
 // const homeRoutes: Routes = [
@@ -31,15 +33,18 @@ import {LoginComponent} from './login/login.component';
 const appRoutes: Routes = [
   { path: './', component: ShopComponent},
   { path: 'admin', component: AdminComponent, canActivate: [AdminGuard]},
+  { path: 'admin/orders', component: OrdersAdminComponent, canActivate: [AdminGuard]},
+  { path: 'admin/products', component: ProductsAdminComponent, canActivate: [AdminGuard]},
   { path: 'login', component: LoginComponent},
+  { path: 'registration', component: RegistrationComponent},
   { path: '**', redirectTo: './' }
-
 ];
 
 @NgModule({
   declarations: [
     AppComponent, ShopComponent, FooterComponent, HeaderComponent, ShopContentComponent,
-    AdminComponent, OrdersAdminComponent, ProductsAdminComponent, LoginComponent /*, StoreModel*/
+    AdminComponent, OrdersAdminComponent, ProductsAdminComponent, LoginComponent,
+    RegistrationComponent /*, StoreModel*/
   ],
   imports: [
     BrowserModule,
