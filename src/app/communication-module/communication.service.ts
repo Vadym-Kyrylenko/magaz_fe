@@ -23,6 +23,16 @@ export class CommunicationService {
     return this.http.post('http://localhost:3000/products', product, httpOptions);
   }
 
+  putProduct(product: any, jwttoken: string) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + jwttoken
+      })
+    };
+    return this.http.put('http://localhost:3000/products', product, httpOptions);
+  }
+
   postOrders(order: any, jwttoken: string) {
     const httpOptions = {
       headers: new HttpHeaders({

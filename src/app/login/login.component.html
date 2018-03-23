@@ -13,7 +13,7 @@
         <form action="javascript:void(0);" method="get">
           <input type="email" name="email" placeholder="Введите Ваш email адрес..." required [(ngModel)]="user.email" />
           <input type="password" name="password" placeholder="Ваш сложный пароль..." required [(ngModel)]="user.password" />
-          <button onclick="location.href='/registration'">Регистрация</button><button (click)="logIn()">Войти</button>
+          <button (click)="logIn()">Войти</button><button onclick="location.href='/registration'">Регистрация</button>
         </form>
       </fieldset>
 

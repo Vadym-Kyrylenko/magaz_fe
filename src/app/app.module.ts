@@ -22,6 +22,8 @@ import {AdminGuard} from './admin/admin.guard';
 import {LoginComponent} from './login/login.component';
 import {RegistrationComponent} from './registration/registration.component';
 
+import { ReactiveFormsModule } from '@angular/forms';
+
 // import {StoreModel} from './store/store.model';
 
 // const homeRoutes: Routes = [
@@ -52,7 +54,7 @@ const appRoutes: Routes = [
     NgbModule.forRoot(),
     HttpClientModule,
     FormsModule,
-    ModelModule
+    ModelModule, ReactiveFormsModule
   ],
   providers: [CommunicationService, AdminGuard],
   bootstrap: [AppComponent]

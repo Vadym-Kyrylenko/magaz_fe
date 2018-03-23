@@ -26,10 +26,14 @@ body {
   position: -webkit-sticky;
   position: sticky;
   top: 48px; /* Height of navbar */
-  height: calc(100vh - 48px);
+  height: calc(100vh - 55px);
   padding-top: .5rem;
   overflow-x: hidden;
-  overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+  /*overflow-y: auto; !* Scrollable contents if viewport is shorter than content. *!*/
+}
+
+a.nav-link:hover {
+  cursor: pointer;
 }
 
 .sidebar .nav-link {
@@ -91,3 +95,163 @@ body {
 
 .border-top { border-top: 1px solid #e5e5e5; }
 .border-bottom { border-bottom: 1px solid #e5e5e5; }
+
+.span-nav {
+  color: #007bff;
+}
+
+.wrapper {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(255,255,255, 0.5);
+  z-index: 1050;
+}
+
+.product-form {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  color: #000;
+}
+.product-form label,.product-form input {
+  display: inline-block;
+  width: 49%;
+  text-align: left;
+}
+
+textarea {
+  width: 95%;
+  min-height: 170px;
+  max-height: 170px;
+}
+
+fieldset{
+  text-align: center;
+  position: center;
+  top: 50%;
+  left: 50%;
+  background-color: #c9c9c9;
+  margin: 0 auto;
+  padding: 5px;
+}
+
+img {
+  height: 50px;
+  width: 50px;
+}
+
+.product{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  color: #000;
+}
+
+.show-product{
+  max-height: 90vh;
+  width: 445px;
+  padding: 20px 40px 40px;
+  background: white;
+  border-radius: 8px;
+  position: absolute;
+  z-index: 20;
+  top: 50%;
+  left:50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  overflow: auto;
+}
+
+.show-product img{
+  height: 200px;
+  width: 200px;
+}
+
+.product-answer{
+  text-align: center;
+  position: fixed;
+  border: #c9c9c9 2px solid;
+  border-radius: 3px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 800px;
+  color: #000;
+  z-index: 1049;
+  background: aquamarine;
+}
+.product-answer .error{
+  background: red;
+  color: black;
+}
+.product-answer button{
+  display: block;
+  width: 100px;
+  text-transform: uppercase;
+  color: #fff;
+  border-radius: 3px;
+  padding: 0;
+  font-size: 18px;
+  border: 0;
+  line-height: 26px;
+  margin: 0 auto;
+  background: coral;
+  cursor: pointer;
+}
+
+.product-form input.ng-touched.ng-invalid {border:solid red 2px;}
+.product-form input.ng-touched.ng-valid {border:solid green 2px;}
+
+.product-form textarea.ng-touched.ng-invalid {border:solid red 2px;}
+.product-form textarea.ng-touched.ng-valid {border:solid green 2px;}
+
+table {
+  font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+  font-size: 14px;
+  border-radius: 10px;
+  border-spacing: 0;
+  text-align: center;
+}
+th {
+  background: #BCEBDD;
+  color: cadetblue;
+  text-shadow: 0 1px 1px #2D2020;
+  padding: 10px 20px;
+}
+th, td {
+  border-style: solid;
+  border-width: 0 1px 1px 0;
+  border-color: white;
+}
+th:first-child, td:first-child {
+  text-align: left;
+}
+th:first-child {
+  border-top-left-radius: 10px;
+}
+th:last-child {
+  border-top-right-radius: 10px;
+  border-right: none;
+}
+td {
+  padding: 10px 20px;
+  background: #F8E391;
+}
+tr:last-child td:first-child {
+  border-radius: 0 0 0 10px;
+}
+tr:last-child td:last-child {
+  border-radius: 0 0 10px 0;
+}
+tr td:last-child {
+  border-right: none;
+}
+
+

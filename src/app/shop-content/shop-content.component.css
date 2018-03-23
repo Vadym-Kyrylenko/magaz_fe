@@ -1,13 +1,19 @@
+.order-form input.ng-touched.ng-invalid {border:solid red 2px;}
+.order-form input.ng-touched.ng-valid {border:solid green 2px;}
+
 .bg{
   background-image: url("../images/background_black.jpg");
-  max-width: 100%;
-  max-height: 100%;
+  width: 100%;
+  height: 100%;
   background-size: 100% 100%;
   padding-bottom: 5px;
-  color: white;
+  color: #000;
   line-height: 10px;
 }
-button{
+
+body{
+}
+button {
   display: block;
   width: 115px;
   text-transform: uppercase;
@@ -20,6 +26,22 @@ button{
   margin: 0 auto;
   background: #eca22e;
   cursor: pointer;
+}
+
+.product button{
+  display: block;
+  width: 115px;
+  text-transform: uppercase;
+  color: #fff;
+  border-radius: 2px;
+  padding: 0;
+  font-size: 18px;
+  border: 0;
+  line-height: 26px;
+  margin: 0 auto;
+  background: #eca22e;
+  cursor: pointer;
+  vertical-align: center;
 }
 button:hover{
   opacity: 0.7;
@@ -41,7 +63,6 @@ button:hover{
   transform: translate(-50%, -50%);
   width: 80%;
   color: #000;
-
 }
 .order-form{
   width: 445px;
@@ -93,6 +114,7 @@ button:hover{
   left:50%;
   transform: translate(-50%, -50%);
   text-align: center;
+  line-height: 12px;
 }
 fieldset button{
   display: inline-block;
@@ -103,15 +125,17 @@ fieldset button{
 .order-answer{
   text-align: center;
   position: fixed;
+  border: #c9c9c9 2px solid;
+  border-radius: 3px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 80%;
+  max-width: 800px;
   color: #000;
   z-index: 1049;
   background: aquamarine;
 }
-.order-answer error{
+.order-answer .error{
   background: red;
   color: black;
 }
@@ -130,10 +154,23 @@ fieldset button{
   cursor: pointer;
 }
 
-/*
-.product{
-  margin-left: 10%;
-  margin-bottom: 5%;
-  margin-top: 10px;
+.product {
+  width: 100%;
+  display: block;
+  margin: 10px;
+  padding: 10px;
+  justify-content: space-between;
+  line-height: 12px;
+  background-color: white;
+  border-radius: 4px;
+  border: 5px solid #c2c2c2;
 }
-*/
+
+.wrapper-for-product{
+  display: inline-flex;
+  left: 50%;
+  text-align: center;
+  margin-left: 75px;
+}
+
+
