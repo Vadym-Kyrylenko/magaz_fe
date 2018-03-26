@@ -4,7 +4,7 @@ import {HttpService} from '../http.service';
 import {StoreModel} from '../store/store.model';
 import {IOrderContacts} from '../interfaces/all.interfaces';
 import {CommunicationService} from '../communication-module/communication.service';
-
+import { FormGroup, FormControl, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-shop-content',
@@ -18,7 +18,7 @@ export class ShopContentComponent implements OnInit {
   choosenProduct: Product;
   feedback: any;
   done   = false;
-  // mess = null;
+
 
   constructor(private httpService: CommunicationService,
               private storeModel: StoreModel) {
@@ -41,7 +41,6 @@ export class ShopContentComponent implements OnInit {
   getProducts() {
     this.storeModel.getProducts().subscribe((data: Product[]) => {
       this.products = data;
-      console.dir(this.products);
     });
   }
 
@@ -55,11 +54,13 @@ export class ShopContentComponent implements OnInit {
 
   addOrder() {
     const order = Object.assign(this.orderContacts, this.choosenProduct);
-    this.postOrders(order);
+    const token = localStorage.getItem('token');
+    this.postOrders(order, token);
     this.closeProduct();
   }
-  postOrders(order: any) {
-    this.httpService.postOrders(order).subscribe((data: any) => {
+
+  postOrders(order: any, jwttoken: string) {
+    this.httpService.postOrders(order, jwttoken).subscribe((data: any) => {
       this.done = true;
       console.log(this.done);
 
@@ -79,4 +80,5 @@ export class ShopContentComponent implements OnInit {
   closeOrderAnswer() {
     this.done = false;
   }
+
 }

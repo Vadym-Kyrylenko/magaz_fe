@@ -5,7 +5,8 @@
         <div class="col-6">
           <div class="order-product">
             <p>
-              <a href="{{choosenProduct.imgSrc}}"><img src="{{choosenProduct.imgSrc}}" alt="img" height="100" width="100"></a>
+              <a href="{{choosenProduct.imgSrc}}"><img src="{{choosenProduct.imgSrc}}" alt="img" height="100"
+                                                       width="100"></a>
             </p>
             <p>Название: {{choosenProduct.name}}</p>
             <p *ngIf="choosenProduct.price.priceUah">Цена: {{choosenProduct.price.priceUah}} грн</p>
@@ -15,38 +16,59 @@
             <p>Категория: {{choosenProduct.category}}</p>
           </div>
         </div>
+
         <div class="col-6">
           <form class="order-form" action="#">
             <fieldset>
               <h2>Оформить заказ</h2>
-              <input type="text" placeholder="Имя" name="name" [(ngModel)]="orderContacts.nameCustomer">
-              <input type="email" placeholder="Email" name="email" [(ngModel)]="orderContacts.email">
-              <input type="text" placeholder="Телефон" name="phone" [(ngModel)]="orderContacts.phone">
+              <input class="form-control" type="text" placeholder="Имя" name="name"
+                     [(ngModel)]="orderContacts.nameCustomer" #nameCustomer="ngModel" required/>
+              <input class="form-control" type="email" placeholder="Email" name="email"
+                     [(ngModel)]="orderContacts.email" #email="ngModel" required email/>
+              <input class="form-control" type="text" placeholder="Телефон (10 цифр), напр.: 0123456789" name="phone"
+                     [(ngModel)]="orderContacts.phone" #phone="ngModel"
+                     required pattern="[0-9]{10}"/>
               <textarea name="textOrder" id="" cols="30" rows="10"
                         placeholder="Коментарий к заказу..."
                         [(ngModel)]="orderContacts.textOrder"></textarea>
-              <button (click)="addOrder()">Отправить</button>
-              <button (click)="closeProduct()">Закрыть</button>
+
             </fieldset>
           </form>
         </div>
-        <div *ngIf="done" class="order-answer">
-          <h2>{{orderContacts.nameCustomer}}, Ваш заказ на {{choosenProduct.name}} принят!</h2>
-          <p>В ближайщее время с Вами свяжется наш менеджер.</p>
+        <div class="col-12 for-btn">
+          <button [disabled]="nameCustomer.invalid || email.invalid || phone.invalid"
+                  class="btn btn-default cbtn" (click)="addOrder()">Отправить</button>
+          <button (click)="closeProduct()" class="btn btn-default cbtn">Закрыть</button>
         </div>
       </div>
     </div>
   </div>
-  <!--<h3 align="center" font style="color:mediumseagreen">shop-content</h3>-->
-  <div class="row">
-    <div class="col-4 product" *ngFor="let product of products">
-      <p><a href="{{product?.imgSrc}}"><img src="{{product?.imgSrc}}" alt="img" height="100" width="100"></a></p>
-      <p>Название: {{product?.name}}</p>
-      <p *ngIf="product?.price.priceUah">Цена: {{product?.price.priceUah}} грн</p>
-      <p *ngIf="product?.price.priceUsd">Цена: {{product?.price.priceUsd}} usd</p>
-      <p>Описание: {{product?.description}}</p>
-      <p>Артикул: {{product?.article}}</p>
-      <button (click)="choseProduct(product)">Заказать</button>
-      <br><br><br>
+  <div class="wrapper-for-order-answer">
+    <div *ngIf="done === true" class="order-answer">
+      <div *ngIf="feedback.mess === 1">
+        <h2>{{feedback.order.nameCustomer}}, Ваш заказ на {{feedback.order.name}} принят!</h2>
+        <p>В ближайщее время с Вами свяжется наш менеджер.</p>
+      </div>
+      <div *ngIf="feedback.mess === 2">
+        <p class="error">Что-то пошло не так. Пожалуйста, повторите Ваш заказ снова!</p>
+      </div>
+      <button (click)="closeOrderAnswer()">Закрыть</button>
+    </div>
+
+
+    <div class="wrapper-for-product container">
+        <div class="row cproduct">
+          <div class="product col-3" *ngFor="let product of products">
+            <p><a href="{{product?.imgSrc}}"><img src="{{product?.imgSrc}}" alt="img" height="100" width="100"></a></p>
+            <p>Название: {{product?.name}}</p>
+            <p *ngIf="product?.price.priceUah">Цена: {{product?.price.priceUah}} грн</p>
+            <p *ngIf="product?.price.priceUsd">Цена: {{product?.price.priceUsd}} usd</p>
+            <!--<p>Описание: {{product?.description}}</p>-->
+            <p>Артикул: {{product?.article}}</p>
+            <button (click)="choseProduct(product)">Заказать</button>
+            <!--<br><br><br>-->
+          </div>
+        </div>
     </div>
   </div>
+</div>

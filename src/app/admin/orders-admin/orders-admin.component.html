@@ -1,43 +1,110 @@
+<nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
+  <a class="navbar-brand col-sm-3 col-md-1 mr-0" href="/">На сайт</a>
+  <a class="navbar-brand col-sm-3 col-md-1 mr-0" href="/admin">Админка</a>
+  <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
+  <ul class="navbar-nav px-3">
+    <li class="nav-item text-nowrap">
+      <a class="nav-link" (click)="logOut()">Sign out</a>
+    </li>
+  </ul>
+</nav>
+<div class="container-fluid">
+  <div class="row">
+    <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+      <div class="sidebar-sticky">
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a class="nav-link" href="admin/orders">
+              <span class="span-nav">Заказы</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="admin/products">
+              Продукты
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+</div>
 <main role="main" class="col-md-4 ml-sm-auto col-lg-10 pt-3 px-4">
   <h1>Orders</h1>
-  <!--<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">-->
-    <!--<div class="row">-->
-      <div class="col-4" *ngFor="let order of orders">
-        <p><a href="{{order?.imgSrc}}"><img src="{{order?.imgSrc}}" alt="img" height="100" width="100"></a></p>
-        <p>Название: {{order?.name}}</p>
-        <p *ngIf="order?.price.priceUah">Цена: {{order?.price.priceUah}} грн</p>
-        <p *ngIf="order?.price.priceUsd">Цена: {{order?.price.priceUsd}} usd</p>
-        <p>Описание: {{order?.description}}</p>
-        <p>Артикул: {{order?.article}}</p>
-        <p>Категория товара: {{order?.category}}</p>
-        <p>Номер заказа: {{order?._id}}</p>
-        <p>Имя заказчика: {{order?.nameCustomer}}</p>
-        <p>Email заказчика: {{order?.email}}</p>
-        <p>Телефон заказчика: {{order?.phone}}</p>
-        <p>Коментарий к заказу: {{order?.textOrder}}</p>
-        <button (click)="choseOrder(order)">Просмотреть</button>
-        <br><br><br>
-      </div>
-    <!--</div>-->
-    <!--</div>-->
+  <div class="row">
+    <table>
+      <thead>
+      <tr>
+        <th> </th>
+        <th>Название</th>
+        <th>Имя заказчика</th>
+        <th>Телефон заказчика</th>
+        <th>Цена в грн</th>
+        <th>Цена в долл</th>
+        <th>Артикул</th>
+        <th>Действие</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let order of orders">
+        <td><a href="{{order?.imgSrc}}"><img src="{{order?.imgSrc}}" alt="img" height="100" width="100"></a></td>
+        <td>{{order?.name}}</td>
+        <td>{{order?.nameCustomer}}</td>
+        <td>{{order?.phone}}</td>
+        <td>{{order?.price.priceUah}}</td>
+        <td>{{order?.price.priceUsd}}</td>
+        <!--<p>Описание: {{product?.description}}</p>-->
+        <td>{{order?.article}}</td>
+        <td>
+          <button (click)="deleteOrder(order._id)">Удалить</button>
+          <button (click)="choseOrder(order)">Просмотреть</button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
 
-  <canvas class="my-4" id="myChart" width="900" height="380"></canvas>
-  <div class="wrapper" *ngIf="choosenOrder">
+  <div class="wrapper" *ngIf="choosenOrder" (click)="fgh($event)">
     <div class="order">
-      <!--<div class="row row-flex">-->
-        <div class="col-3">
-            <p>
-              <a href="{{choosenOrder.imgSrc}}"><img src="{{choosenOrder.imgSrc}}" alt="img" height="100" width="100"></a>
-            </p>
+      <div class="show-order">
+        <div class="row">
+          <div class="col-12">
+          <p>
+            <a href="{{choosenOrder.imgSrc}}"><img src="{{choosenOrder.imgSrc}}" alt="img"></a>
+          </p>
+          </div>
+          <div class="col-6">
             <p>Название: {{choosenOrder.name}}</p>
             <p *ngIf="choosenOrder.price.priceUah">Цена: {{choosenOrder.price.priceUah}} грн</p>
             <p *ngIf="choosenOrder.price.priceUsd">Цена: {{choosenOrder.price.priceUsd}} usd</p>
-            <p>Описание: {{choosenOrder.description}}</p>
+            <!--<p>Описание: {{choosenOrder.description}}</p>-->
             <p>Артикул: {{choosenOrder.article}}</p>
             <p>Категория: {{choosenOrder.category}}</p>
-            <button (click)="closeOrder()">Закрыть</button>
+          </div>
+          <div class="col-6">
+            <!--<p>Номер заказа: {{choosenOrder._id}}</p>-->
+            <p>Имя заказчика: {{choosenOrder.nameCustomer}}</p>
+            <p>Email заказчика: {{choosenOrder.email}}</p>
+            <p>Телефон заказчика: {{choosenOrder.phone}}</p>
+          </div>
         </div>
-      <!--</div>-->
+        <div class="row">
+          <div class="col-12">
+            <p>Коментарий к заказу: {{choosenOrder.textOrder}}</p>
+            <button (click)="closeOrder()">Закрыть</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="wrapper-for-order-answer">
+    <div *ngIf="done === true" class="order-answer">
+      <div *ngIf="feedback.mess === 'del'">
+        <h2>Заказ удален!</h2>
+      </div>
+      <div *ngIf="feedback.mess === 2">
+        <p class="error">Что-то пошло не так. Пожалуйста, попробуйте снова!</p>
+      </div>
+      <button (click)="closeOrderAnswer()">Закрыть</button>
     </div>
   </div>
 </main>

@@ -26,10 +26,10 @@ body {
   position: -webkit-sticky;
   position: sticky;
   top: 48px; /* Height of navbar */
-  height: calc(100vh - 48px);
+  height: calc(100vh - 55px);
   padding-top: .5rem;
   overflow-x: hidden;
-  overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+  /*overflow-y: auto; !* Scrollable contents if viewport is shorter than content. *!*/
 }
 
 a.nav-link:hover {
@@ -110,12 +110,7 @@ a.nav-link:hover {
   z-index: 1050;
 }
 
-img {
-  height: 50px;
-  width: 50px;
-}
-
-.order {
+.product-form {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -124,10 +119,45 @@ img {
   color: #000;
 }
 
-.show-order{
+.product-form label,.product-form input {
+  display: inline-block;
+  width: 49%;
+  text-align: left;
+}
+
+textarea {
+  width: 95%;
+  min-height: 170px;
+  max-height: 170px;
+}
+
+fieldset{
+  text-align: center;
+  position: center;
+  top: 50%;
+  left: 50%;
+  background-color: #eeeeee;
+  margin: 0 auto;
+  padding: 5px;
+}
+
+img {
+  height: 50px;
+  width: 50px;
+}
+
+.product{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  color: #000;
+}
+
+.show-product{
   max-height: 90vh;
-  min-width: 450px;
-  max-width: 600px;
+  width: 445px;
   padding: 20px 40px 40px;
   background: white;
   border-radius: 8px;
@@ -141,12 +171,12 @@ img {
   overflow: auto;
 }
 
-.show-order img{
-  height: 50px;
-  width: 50px;
+.show-product img{
+  height: 200px;
+  width: 200px;
 }
 
-.order-answer{
+.product-answer{
   text-align: center;
   position: fixed;
   border: #c9c9c9 2px solid;
@@ -159,11 +189,11 @@ img {
   z-index: 1049;
   background: aquamarine;
 }
-.order-answer .error{
+.product-answer .error{
   background: red;
   color: black;
 }
-.order-answer button{
+.product-answer button{
   display: block;
   width: 100px;
   text-transform: uppercase;
@@ -178,6 +208,11 @@ img {
   cursor: pointer;
 }
 
+.product-form input.ng-touched.ng-invalid {border:solid red 2px;}
+.product-form input.ng-touched.ng-valid {border:solid green 2px;}
+
+.product-form textarea.ng-touched.ng-invalid {border:solid red 2px;}
+.product-form textarea.ng-touched.ng-valid {border:solid green 2px;}
 
 table {
   font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
@@ -221,3 +256,6 @@ tr td:last-child {
   border-right: none;
 }
 
+.tkurs{
+  float: right;
+}

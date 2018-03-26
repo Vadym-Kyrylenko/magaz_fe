@@ -1,7 +1,6 @@
 import { Routes, RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {HttpClientModule} from '@angular/common/http';
 
@@ -13,27 +12,32 @@ import {ShopContentComponent} from './shop-content/shop-content.component';
 
 import {AdminComponent} from './admin/admin.component';
 import {OrdersAdminComponent} from './admin/orders-admin/orders-admin.component';
+import {ProductsAdminComponent} from './admin/products-admin/products-admin.component';
 import {ModelModule} from './store/model.module';
-// import {StoreModel} from './store/store.model';
+
 import {CommunicationService} from './communication-module/communication.service';
 import { FormsModule } from '@angular/forms';
+import {AdminGuard} from './admin/admin.guard';
+import {LoginComponent} from './login/login.component';
+import {RegistrationComponent} from './registration/registration.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
-// const homeRoutes: Routes = [
-//   //{ path: '', component: ShopComponent},
-//   { path: 'admin', component: AdminComponent}
-//   // { path: 'contacts', component: ContactsComponent}
-//   // { path: 'callbackbtn', component: CallBackComponent},
-// ];
+
 const appRoutes: Routes = [
   { path: './', component: ShopComponent},
-  { path: 'admin', component: AdminComponent},
+  { path: 'admin', component: AdminComponent, canActivate: [AdminGuard]},
+  { path: 'admin/orders', component: OrdersAdminComponent, canActivate: [AdminGuard]},
+  { path: 'admin/products', component: ProductsAdminComponent, canActivate: [AdminGuard]},
+  { path: 'login', component: LoginComponent},
+  { path: 'registration', component: RegistrationComponent},
   { path: '**', redirectTo: './' }
 ];
 
 @NgModule({
   declarations: [
     AppComponent, ShopComponent, FooterComponent, HeaderComponent, ShopContentComponent,
-    AdminComponent/*, StoreModel*/, OrdersAdminComponent
+    AdminComponent, OrdersAdminComponent, ProductsAdminComponent, LoginComponent,
+    RegistrationComponent
   ],
   imports: [
     BrowserModule,
@@ -41,9 +45,9 @@ const appRoutes: Routes = [
     NgbModule.forRoot(),
     HttpClientModule,
     FormsModule,
-    ModelModule
+    ModelModule, ReactiveFormsModule
   ],
-  providers: [CommunicationService],
+  providers: [CommunicationService, AdminGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
