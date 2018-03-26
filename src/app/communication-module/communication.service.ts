@@ -33,6 +33,16 @@ export class CommunicationService {
     return this.http.put('http://localhost:3000/products', product, httpOptions);
   }
 
+  putRateProduct(currentRate: any, jwttoken: string) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + jwttoken
+      })
+    };
+    return this.http.put('http://localhost:3000/products/' + currentRate, httpOptions);
+  }
+
   postOrders(order: any, jwttoken: string) {
     const httpOptions = {
       headers: new HttpHeaders({
@@ -78,7 +88,6 @@ export class CommunicationService {
   }
 
   regUser(user) {
-    console.log(user);
     return this.http.post('http://localhost:3000/register/', user);
   }
 }

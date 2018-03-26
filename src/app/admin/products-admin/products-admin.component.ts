@@ -28,7 +28,8 @@ export class ProductsAdminComponent implements OnInit {
       name: '',
       price: {
         priceUah: null,
-        priceUsd: null
+        priceUsd: null,
+        rateUsd: null
       },
       description: '',
       article: '',
@@ -45,6 +46,7 @@ export class ProductsAdminComponent implements OnInit {
   getProducts() {
     this.storeModel.getProducts().subscribe((data: Product[]) => {
       this.products = data;
+      console.dir(data);
     });
   }
 
@@ -73,7 +75,8 @@ export class ProductsAdminComponent implements OnInit {
       name: '',
       price: {
         priceUah: null,
-        priceUsd: null
+        priceUsd: null,
+        rateUsd: null
       },
       description: '',
       article: '',
@@ -167,12 +170,12 @@ export class ProductsAdminComponent implements OnInit {
   changeRate() {
     this.products.forEach((product) => {
       if (product.price.priceUsd != null) {
-        product.price.priceUah = product.price.priceUsd * this.currentRate;
+        product.price.priceUah = Math.round(product.price.priceUsd * this.currentRate * 100) / 100;
       }
     });
   }
 
-  saveChangeRate() {
+  /*saveChangeRate() {
     this.products.forEach((product) => {
       if (product.price.priceUsd != null) {
         const token = localStorage.getItem('token');
@@ -188,5 +191,29 @@ export class ProductsAdminComponent implements OnInit {
         });
       }
     });
+  }*/
+
+  saveChangeRate2() {
+    console.dir('saveChangeRate2');
+    if (this.currentRate != null) {
+      const token = localStorage.getItem('token');
+      this.httpService.putRateProduct(this.currentRate, token).subscribe((data: any) => {
+        console.dir(data);
+        this.done = true;
+        this.getProducts();
+        if (data.message === 'Rate changed') {
+          this.feedback.mess = 3;
+          this.feedback.product = data.product;
+        } else if (data.message === 'Products not edited') {
+          this.feedback.mess = 2;
+        }
+      });
+    }
+  }
+
+  resetRate() {
+    this.getProducts();
+    return this.currentRate = this.products[0].price.rateUsd;
+
   }
 }
