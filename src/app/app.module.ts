@@ -1,7 +1,6 @@
 import { Routes, RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {HttpClientModule} from '@angular/common/http';
 
@@ -21,15 +20,9 @@ import { FormsModule } from '@angular/forms';
 import {AdminGuard} from './admin/admin.guard';
 import {LoginComponent} from './login/login.component';
 import {RegistrationComponent} from './registration/registration.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
-// import {StoreModel} from './store/store.model';
 
-// const homeRoutes: Routes = [
-//   //{ path: '', component: ShopComponent},
-//   { path: 'admin', component: AdminComponent}
-//   // { path: 'contacts', component: ContactsComponent}
-//   // { path: 'callbackbtn', component: CallBackComponent},
-// ];
 const appRoutes: Routes = [
   { path: './', component: ShopComponent},
   { path: 'admin', component: AdminComponent, canActivate: [AdminGuard]},
@@ -44,7 +37,7 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent, ShopComponent, FooterComponent, HeaderComponent, ShopContentComponent,
     AdminComponent, OrdersAdminComponent, ProductsAdminComponent, LoginComponent,
-    RegistrationComponent /*, StoreModel*/
+    RegistrationComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +45,7 @@ const appRoutes: Routes = [
     NgbModule.forRoot(),
     HttpClientModule,
     FormsModule,
-    ModelModule
+    ModelModule, ReactiveFormsModule
   ],
   providers: [CommunicationService, AdminGuard],
   bootstrap: [AppComponent]

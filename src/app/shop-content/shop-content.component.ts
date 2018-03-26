@@ -4,7 +4,7 @@ import {HttpService} from '../http.service';
 import {StoreModel} from '../store/store.model';
 import {IOrderContacts} from '../interfaces/all.interfaces';
 import {CommunicationService} from '../communication-module/communication.service';
-
+import { FormGroup, FormControl, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-shop-content',
@@ -18,7 +18,7 @@ export class ShopContentComponent implements OnInit {
   choosenProduct: Product;
   feedback: any;
   done   = false;
-  // mess = null;
+
 
   constructor(private httpService: CommunicationService,
               private storeModel: StoreModel) {
@@ -80,4 +80,5 @@ export class ShopContentComponent implements OnInit {
   closeOrderAnswer() {
     this.done = false;
   }
+
 }

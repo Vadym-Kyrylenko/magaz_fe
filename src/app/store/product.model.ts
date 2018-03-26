@@ -19,7 +19,8 @@ export class Product {
     this.name = name;
     this.price = {
       priceUah : price.priceUah,
-      priceUsd : price.priceUsd
+      priceUsd : price.priceUsd,
+      rateUsd : price.rateUsd
     };
     this.description = description;
     this.article = article;
