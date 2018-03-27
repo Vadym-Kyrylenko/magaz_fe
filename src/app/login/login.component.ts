@@ -30,8 +30,8 @@ export class LoginComponent {
 
 
 
-  logIn(user) {
-    user = this.user;
+  logIn() {
+    const user = this.user;
     this.httpService.logIn(user).subscribe((data: any) => {
       console.dir(data);
       this.token = data.token;
