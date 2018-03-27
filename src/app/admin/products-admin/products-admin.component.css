@@ -223,8 +223,8 @@ table {
 }
 th {
   background: #BCEBDD;
-  color: cadetblue;
-  text-shadow: 0 1px 1px #2D2020;
+  color:black;
+  /*text-shadow: 0 1px 1px #2D2020;*/
   padding: 10px 20px;
 }
 th, td {

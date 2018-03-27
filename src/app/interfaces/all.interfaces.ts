@@ -1,7 +1,7 @@
 export interface IPrice {
   priceUah: number;
   priceUsd: number;
-  rateUsd: number;
+  rateUsd?: number;
 }
 
 export interface IOrderContacts {

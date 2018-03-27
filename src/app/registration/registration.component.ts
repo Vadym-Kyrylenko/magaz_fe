@@ -31,8 +31,8 @@ export class RegistrationComponent {
 
 
 
-  regUser(user) {
-    user = this.user;
+  regUser() {
+    const user = this.user;
     this.httpService.regUser(user).subscribe((data: any) => {
       console.dir(data);
       this.token = data.token;

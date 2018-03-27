@@ -24,13 +24,14 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 
 const appRoutes: Routes = [
-  { path: './', component: ShopComponent},
+  { path: 'home', component: ShopComponent},
   { path: 'admin', component: AdminComponent, canActivate: [AdminGuard]},
   { path: 'admin/orders', component: OrdersAdminComponent, canActivate: [AdminGuard]},
   { path: 'admin/products', component: ProductsAdminComponent, canActivate: [AdminGuard]},
   { path: 'login', component: LoginComponent},
   { path: 'registration', component: RegistrationComponent},
-  { path: '**', redirectTo: './' }
+  { path: '**', redirectTo: 'home' },
+  // { path: '/', redirectTo: 'home' }
 ];
 
 @NgModule({
