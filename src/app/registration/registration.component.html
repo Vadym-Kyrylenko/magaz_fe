@@ -19,5 +19,17 @@
         </form>
       </fieldset>
     </div>
+
+    <div class="wrapper-for-registration-answer">
+      <div *ngIf="done === true" class="registration-answer">
+        <div *ngIf="feedback.mess === 1">
+          <h2>{{user.name}}, Вы успешно зарегистрированы</h2>
+        </div>
+        <div *ngIf="feedback.mess === 2">
+          <p class="error">Что-то пошло не так. Пожалуйста, попробуйте снова!</p>
+        </div>
+        <button (click)="closeRegistrationAnswer()">Закрыть</button>
+      </div>
+    </div>
   </div>
 </div>

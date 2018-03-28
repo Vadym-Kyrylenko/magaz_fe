@@ -1,10 +1,10 @@
 <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
-  <a class="navbar-brand col-sm-3 col-md-1 mr-0" href="/">На сайт</a>
-  <a class="navbar-brand col-sm-3 col-md-1 mr-0" href="/admin">Админка</a>
-  <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
+  <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="/">На сайт</a>
+  <!--<a class="navbar-brand col-sm-3 col-md-1 mr-0" href="/admin">Админка</a>-->
+  <!--<input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">-->
   <ul class="navbar-nav px-3">
     <li class="nav-item text-nowrap">
-      <a class="nav-link" (click)="logOut()">Sign out</a>
+      <a class="nav-link" (click)="logOut()">Выйти</a>
     </li>
   </ul>
 </nav>
@@ -29,7 +29,7 @@
   </div>
 </div>
 <div role="main" class="col-md-4 ml-sm-auto col-lg-10 pt-3 px-4">
-  <button (click)="createProduct()">СОЗДАТЬ НОВЫЙ ПРОДУКТ</button> <div class="tkurs">Текущий действующий курс: {{products[0].price.rateUsd}}$</div>
+  <button (click)="createProduct()">СОЗДАТЬ НОВЫЙ ПРОДУКТ</button> <div class="tkurs">Текущий действующий курс: {{products[0].price.rateUsd}}грн. = 1$</div>
   <br><br>
   <div class="kurs"><label>Курс доллара: </label><input type="number" name="kurs" [(ngModel)]="currentRate">
     <button (click)="changeRate()">Пересчитать</button>

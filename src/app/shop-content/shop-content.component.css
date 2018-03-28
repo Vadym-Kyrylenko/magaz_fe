@@ -143,6 +143,7 @@ fieldset button{
   color: #000;
   z-index: 1049;
   background: aquamarine;
+  padding: 1em;
 }
 .order-answer .error{
   background: red;

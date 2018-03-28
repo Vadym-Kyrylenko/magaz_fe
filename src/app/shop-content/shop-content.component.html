@@ -36,9 +36,9 @@
           </form>
         </div>
         <div class="col-12 for-btn">
+          <button (click)="closeProduct()" class="btn btn-default cbtn">Закрыть</button>
           <button [disabled]="nameCustomer.invalid || email.invalid || phone.invalid"
                   class="btn btn-default cbtn" (click)="addOrder()">Отправить</button>
-          <button (click)="closeProduct()" class="btn btn-default cbtn">Закрыть</button>
         </div>
       </div>
     </div>

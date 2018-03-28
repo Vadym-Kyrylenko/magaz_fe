@@ -47,6 +47,7 @@ export class ProductsAdminComponent implements OnInit {
     this.storeModel.getProducts().subscribe((data: Product[]) => {
       this.products = data;
       console.dir(data);
+      return this.currentRate = this.products[0].price.rateUsd;
     });
   }
 
