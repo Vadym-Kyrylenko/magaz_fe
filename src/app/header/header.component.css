@@ -20,6 +20,7 @@
   text-decoration: none;
 }
 
+
 /*
  * Dummy devices (replace them with your own or something else entirely!)
  */
@@ -79,3 +80,7 @@
 }
 
 .overflow-hidden { overflow: hidden; }
+
+p.py-2.d-none.d-md-inline-block {
+  margin-bottom: 0;
+}

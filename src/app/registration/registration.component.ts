@@ -21,7 +21,11 @@ export class RegistrationComponent {
   token: string;
   feedback: any;
 
+
   constructor(private httpService: CommunicationService) {
+    this.feedback = {
+      mess: null
+    };
     this.user = {
       name: '',
       email : '',
@@ -41,12 +45,21 @@ export class RegistrationComponent {
       console.log(this.token);
       localStorage.setItem(this.user.email, this.token);
 
-      /*if (data.message === 'User register') {
+      if (data.success) {
         this.feedback.mess = 1;
         this.feedback.user = data.user;
-      } else if (data.message === 'User not registered') {
+      } else if (!data.success) {
         this.feedback.mess = 2;
-      }*/
+      }
     });
+  }
+
+  closeRegistrationAnswer() {
+    this.done = false;
+    this.user = {
+      name: '',
+      email : '',
+      password : ''
+    };
   }
 }

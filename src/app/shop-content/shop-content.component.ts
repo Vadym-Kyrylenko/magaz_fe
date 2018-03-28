@@ -56,6 +56,12 @@ export class ShopContentComponent implements OnInit {
     const order = Object.assign(this.orderContacts, this.choosenProduct);
     const token = localStorage.getItem('token');
     this.postOrders(order, token);
+    this.orderContacts = {
+      nameCustomer: '',
+      email: '',
+      phone: '',
+      textOrder: ''
+    };
     this.closeProduct();
   }
 

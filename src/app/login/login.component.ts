@@ -22,6 +22,9 @@ export class LoginComponent {
   feedback: any;
 
   constructor(private httpService: CommunicationService, private router: Router) {
+    this.feedback = {
+      mess: null
+    };
     this.user = {
       email : '',
       password : ''
@@ -38,16 +41,15 @@ export class LoginComponent {
       this.done = true;
       console.log(this.done);
       console.log(this.token);
-      // localStorage.setItem(this.user.email, this.token);
       localStorage.setItem('token', this.token);
       this.router.navigate(['/admin']);
+      console.dir(data);
 
-      /*if (data.message === 'User LogIn') {
-       this.feedback.mess = 1;
-       this.feedback.user = data.user;
-     } else if (data.message === 'User not LogIn') {
-       this.feedback.mess = 2;
-     }*/
-    });
+    }, (error: any) => {
+      console.dir(error);
+      if (error.error.message === 'Incorrect password.') {
+        this.feedback.mess = 2;
+      }
+      });
   }
 }
