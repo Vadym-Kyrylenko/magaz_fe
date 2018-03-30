@@ -63,10 +63,8 @@
             <p>Название: {{product?.name}}</p>
             <p *ngIf="product?.price.priceUah">Цена: {{product?.price.priceUah}} грн</p>
             <p *ngIf="product?.price.priceUsd">Цена: {{product?.price.priceUsd}} usd</p>
-            <!--<p>Описание: {{product?.description}}</p>-->
             <p>Артикул: {{product?.article}}</p>
             <button (click)="choseProduct(product)">Заказать</button>
-            <!--<br><br><br>-->
           </div>
         </div>
     </div>

@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {User} from '../login/login.component';
-
+import {urlsettings} from '../config/constants';
 
 @Injectable()
 export class CommunicationService {
@@ -10,7 +10,7 @@ export class CommunicationService {
   }
 
   getData() {
-    return this.http.get('http://localhost:3000/products');
+    return this.http.get(urlsettings.backurl + '/products');
   }
 
   postProduct(product: any, jwttoken: string) {
@@ -20,7 +20,7 @@ export class CommunicationService {
         'Authorization': 'Bearer ' + jwttoken
       })
     };
-    return this.http.post('http://localhost:3000/products', product, httpOptions);
+    return this.http.post(urlsettings.backurl + '/products', product, httpOptions);
   }
 
   putProduct(product: any, jwttoken: string) {
@@ -30,7 +30,7 @@ export class CommunicationService {
         'Authorization': 'Bearer ' + jwttoken
       })
     };
-    return this.http.put('http://localhost:3000/products', product, httpOptions);
+    return this.http.put(urlsettings.backurl + '/products', product, httpOptions);
   }
 
   putRateProduct(currentRate: any, jwttoken: string) {
@@ -40,7 +40,7 @@ export class CommunicationService {
         'Authorization': 'Bearer ' + jwttoken
       })
     };
-    return this.http.put('http://localhost:3000/products/' + currentRate, httpOptions);
+    return this.http.put(urlsettings.backurl + '/products/' + currentRate, httpOptions);
   }
 
   postOrders(order: any, jwttoken: string) {
@@ -50,7 +50,7 @@ export class CommunicationService {
         'Authorization': 'Bearer ' + jwttoken
       })
     };
-    return this.http.post('http://localhost:3000/orders', order, httpOptions);
+    return this.http.post(urlsettings.backurl + '/orders', order, httpOptions);
   }
 
   getOrders(jwttoken: string) {
@@ -60,7 +60,7 @@ export class CommunicationService {
         'Authorization': 'Bearer ' + jwttoken
       })
     };
-    return this.http.get('http://localhost:3000/orders', httpOptions);
+    return this.http.get(urlsettings.backurl + '/orders', httpOptions);
   }
 
   deleteOrders(order: any, jwttoken: string) {
@@ -70,7 +70,7 @@ export class CommunicationService {
         'Authorization': 'Bearer ' + jwttoken
       })
     };
-    return this.http.delete('http://localhost:3000/orders/' + order, httpOptions);
+    return this.http.delete(urlsettings.backurl + '/orders/' + order, httpOptions);
   }
 
   deleteProducts(product: any, jwttoken: string) {
@@ -80,14 +80,14 @@ export class CommunicationService {
         'Authorization': 'Bearer ' + jwttoken
       })
     };
-    return this.http.delete('http://localhost:3000/products/' + product, httpOptions);
+    return this.http.delete(urlsettings.backurl + '/products/' + product, httpOptions);
   }
 
   logIn(user: User) {
-    return this.http.post('http://localhost:3000/login/', user);
+    return this.http.post(urlsettings.backurl + '/login/', user);
   }
 
   regUser(user) {
-    return this.http.post('http://localhost:3000/register/', user);
+    return this.http.post(urlsettings.backurl + '/register/', user);
   }
 }

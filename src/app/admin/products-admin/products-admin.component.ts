@@ -65,8 +65,8 @@ export class ProductsAdminComponent implements OnInit {
     if (products.name && products.article && (products.price.priceUah || products.price.priceUsd) && products.description
       && products.category && products.imgSrc) {
       this.postProduct(products);
-      this.closeAddProduct();
-      this.clearForm();
+      // this.closeAddProduct();
+      // this.clearForm();
       this.getProducts();
     }
   }
