@@ -30,7 +30,6 @@ const appRoutes: Routes = [
   { path: 'admin/products', component: ProductsAdminComponent, canActivate: [AdminGuard]},
   { path: 'login', component: LoginComponent},
   { path: 'registration', component: RegistrationComponent},
-  { path: 'lazy', loadChildren: './lazyloading/lazyloading.module#LazyloadingModule'},
   { path: '**', redirectTo: 'home' },
   // { path: '/', redirectTo: 'home' }
 ];
