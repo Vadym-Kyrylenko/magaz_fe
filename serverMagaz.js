@@ -1,6 +1,6 @@
 var express = require('express');
 var server = express();
-// server.use(require('connect-history-api-fallback')());
+server.use(require('connect-history-api-fallback')());
 server.use('/', express.static(__dirname + '/dist/'));
 var instance = server.listen(5000, function () {
 
