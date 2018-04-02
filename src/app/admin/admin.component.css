@@ -24,7 +24,7 @@ body {
 
 .sidebar-sticky {
   /*position: -webkit-sticky;*/
-  position: sticky;
+  position: absolute;
   top: 48px; /* Height of navbar */
   /*height: calc(100vh - 48px);*/
   padding-top: .5rem;
@@ -63,6 +63,11 @@ a.nav-link:hover {
 /*
  * Navbar
  */
+
+.navbar p{
+  margin-bottom: 0;
+  color: white;
+}
 
 .navbar-brand {
   padding-top: .75rem;
