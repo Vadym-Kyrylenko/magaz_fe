@@ -59,7 +59,8 @@
         <div class="row cproduct">
           <div class="product col-3" *ngFor="let product of products; index as i" [attr.data-index]="i">
             <p>
-                <img id="{{i + ''}}" [src]="getImg(product, i)" alt="img" height="100" width="100">
+                <!--<img id="{{i + ''}}" [src]="getImg(product, i)" alt="img" height="100" width="100">-->
+              <img id="{{i + ''}}" [src]="product.imgSrc" alt="img" height="100" width="100">
             </p>
             <p>Название: {{product?.name}}</p>
             <p *ngIf="product?.price.priceUah">Цена: {{product?.price.priceUah}} грн</p>
