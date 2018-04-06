@@ -24,7 +24,8 @@
       <tbody>
       <tr *ngFor="let product of products; index as i" [attr.data-index]="i">
         <td>
-          <img id="{{i + ''}}" [src]="getImg(product, i)" alt="img" height="100" width="100">
+          <!--<img id="{{i + ''}}" [src]="getImg(product, i)" alt="img" height="100" width="100">-->
+          <img id="{{i + ''}}" [src]="product.imgSrc" alt="img" height="100" width="100">
         </td>
         <td>{{product?.name}}</td>
         <td>{{product?.price.priceUah}}</td>

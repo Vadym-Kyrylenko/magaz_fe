@@ -16,7 +16,8 @@
       </thead>
       <tbody>
       <tr *ngFor="let order of orders; index as i" [attr.data-index]="i">
-        <td><img id="{{i + ''}}" [src]="getImg(order, i)" alt="img" height="100" width="100"></td>
+        <!--<td><img id="{{i + ''}}" [src]="getImg(order, i)" alt="img" height="100" width="100"></td>-->
+        <td><img id="{{i + ''}}" [src]="order.imgSrc" alt="img" height="100" width="100"></td>
         <td>{{order?.name}}</td>
         <td>{{order?.nameCustomer}}</td>
         <td>{{order?.phone}}</td>
