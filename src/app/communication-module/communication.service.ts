@@ -13,14 +13,27 @@ export class CommunicationService {
     return this.http.get(urlsettings.backurl + '/products');
   }
 
-  postProduct(product: any, jwttoken: string) {
+  postProduct(products: any, jwttoken: string) {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + jwttoken
+        'Authorization': 'Bearer ' + jwttoken,
       })
     };
-    return this.http.post(urlsettings.backurl + '/products', product, httpOptions);
+    console.dir(products);
+    return this.http.post(urlsettings.backurl + '/products',  products,  httpOptions);
+  }
+
+  postImg (fd: any, jwttoken: string) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': 'Bearer ' + jwttoken,
+      })
+    };
+
+    console.dir(fd);
+
+    return this.http.post(urlsettings.backurl + '/productsandimg',  fd,  httpOptions);
   }
 
   putProduct(product: any, jwttoken: string) {

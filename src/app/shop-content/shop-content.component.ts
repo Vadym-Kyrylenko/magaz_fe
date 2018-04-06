@@ -40,8 +40,24 @@ export class ShopContentComponent implements OnInit {
 
   getProducts() {
     this.storeModel.getProducts().subscribe((data: Product[]) => {
+      this.products = [];
       this.products = data;
     });
+  }
+
+  getImg(product, i) {
+    const im: any = document.getElementById(i + '');
+    if (im) {
+      const bl = new Blob([new Uint8Array(JSON.parse(product.bufferImg).data)], {type: 'image/jpg'});
+      im.src = URL.createObjectURL(bl);
+    }
+  }
+  getChoosenImg(product) {
+    const im: any = document.getElementById( 'i');
+    if (im) {
+      const bl = new Blob([new Uint8Array(JSON.parse(product.bufferImg).data)], {type: 'image/jpg'});
+      im.src = URL.createObjectURL(bl);
+    }
   }
 
   choseProduct(product) {
@@ -54,6 +70,7 @@ export class ShopContentComponent implements OnInit {
 
   addOrder() {
     const order = Object.assign(this.orderContacts, this.choosenProduct);
+    delete order.bufferImg;
     const token = localStorage.getItem('token');
     this.postOrders(order, token);
     this.orderContacts = {
@@ -68,7 +85,6 @@ export class ShopContentComponent implements OnInit {
   postOrders(order: any, jwttoken: string) {
     this.httpService.postOrders(order, jwttoken).subscribe((data: any) => {
       this.done = true;
-      console.log(this.done);
 
       if (data.message === 'Order saved') {
         this.feedback.mess = 1;
@@ -78,6 +94,7 @@ export class ShopContentComponent implements OnInit {
       }
     });
   }
+
   fgh(event) {
     if (event.path[0].className === 'wrapper') {
       this.closeProduct();

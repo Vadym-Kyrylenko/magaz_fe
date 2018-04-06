@@ -38,6 +38,22 @@ export class OrdersAdminComponent implements OnInit {
     });
   }
 
+  getImg(order, i) {
+    const im: any = document.getElementById(i + '');
+    if (im) {
+      const bl = new Blob([new Uint8Array(JSON.parse(order.bufferImg).data)], {type: 'image/jpg'});
+      im.src = URL.createObjectURL(bl);
+    }
+  }
+
+  getChoosenImg(order) {
+    const im: any = document.getElementById( 'i');
+    if (im) {
+      const bl = new Blob([new Uint8Array(JSON.parse(order.bufferImg).data)], {type: 'image/jpg'});
+      im.src = URL.createObjectURL(bl);
+    }
+  }
+
   choseOrder(order) {
     this.choosenOrder = order;
   }
@@ -62,16 +78,12 @@ export class OrdersAdminComponent implements OnInit {
       });
   }
 
-  logOut() {
-    localStorage.removeItem('token');
-    this.router.navigate(['/login']);
-  }
-
   fgh(event) {
     if (event.path[0].className === 'wrapper') {
       this.closeOrder();
     }
   }
+
   closeOrderAnswer() {
     this.done = false;
   }
