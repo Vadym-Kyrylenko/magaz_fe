@@ -5,7 +5,8 @@
         <div class="col-6">
           <div class="order-product">
             <p>
-                <img id="i" [src]="getChoosenImg(choosenProduct)" alt="img" height="100" width="100">
+                <!--<img id="i" [src]="getChoosenImg(choosenProduct)" alt="img" height="100" width="100">-->
+              <img id="{{i + ''}}" [src]="choosenProduct.imgSrc" alt="img" height="100" width="100">
             </p>
             <p>Название: {{choosenProduct.name}}</p>
             <p *ngIf="choosenProduct.price.priceUah">Цена: {{choosenProduct.price.priceUah}} грн</p>
