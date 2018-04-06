@@ -7,6 +7,7 @@ export class Product {
   public article: string;
   public category: string;
   public imgSrc: string;
+  public bufferImg: string;
 
 
   constructor(name: string,
@@ -14,7 +15,9 @@ export class Product {
               description: string,
               article: string,
               category: string,
-              imgSrc: string) {
+              imgSrc: string,
+              bufferImg: string
+  ) {
 
     this.name = name;
     this.price = {
@@ -26,5 +29,6 @@ export class Product {
     this.article = article;
     this.category = category;
     this.imgSrc = imgSrc;
+    this.bufferImg = bufferImg;
   }
 }

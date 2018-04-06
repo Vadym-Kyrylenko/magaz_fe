@@ -1,41 +1,12 @@
-<!--<nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
-  <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="/">На сайт</a>
-  &lt;!&ndash;<a class="navbar-brand col-sm-3 col-md-1 mr-0" href="/admin">Админка</a>&ndash;&gt;
-  &lt;!&ndash;<input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">&ndash;&gt;
-  <ul class="navbar-nav px-3">
-    <li class="nav-item text-nowrap">
-      <a class="nav-link" (click)="logOut()">Выйти</a>
-    </li>
-  </ul>
-</nav>
-<div class="container-fluid">
-  <div class="row">
-    <nav class="col-md-2 d-none d-md-block bg-light sidebar">
-      <div class="sidebar-sticky">
-        <ul class="nav flex-column">
-          <li class="nav-item">
-            <a class="nav-link" href="admin/orders">
-              Заказы
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="admin/products">
-              <span class="span-nav">Продукты</span>
-            </a>
-          </li>
-        </ul>
-      </div>
-    </nav>
-  </div>
-</div>-->
 <div>
   <h1>Продукты</h1>
-  <button (click)="createProduct()">СОЗДАТЬ НОВЫЙ ПРОДУКТ</button> <div class="tkurs">Текущий действующий курс: {{products[0].price.rateUsd}}грн. = 1$</div>
+  <button (click)="createProduct()">СОЗДАТЬ НОВЫЙ ПРОДУКТ</button>
+  <!--<div class="tkurs">Текущий действующий курс: {{products[0].price.rateUsd}}грн. = 1$</div>-->
   <br><br>
-  <div class="kurs"><label>Курс доллара: </label><input type="number" name="kurs" [(ngModel)]="currentRate">
+  <div class="kurs">
+    <label>Курс доллара: </label><input type="number" name="kurs" [(ngModel)]="currentRate">
     <button (click)="changeRate()">Пересчитать</button>
-    <!--<button (click)="saveChangeRate()">Сохранить</button>-->
-    <button (click)="saveChangeRate2()">Сохранить на сервере</button>
+    <button (click)="saveChangeRate()">Сохранить на сервере</button>
     <button (click)="resetRate()">Сбросить</button>
   </div>
   <div class="row">
@@ -51,8 +22,10 @@
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let product of products">
-        <td><a href="{{product?.imgSrc}}"><img src="{{product?.imgSrc}}" alt="img" height="100" width="100"></a></td>
+      <tr *ngFor="let product of products; index as i" [attr.data-index]="i">
+        <td>
+          <img id="{{i + ''}}" [src]="getImg(product, i)" alt="img" height="100" width="100">
+        </td>
         <td>{{product?.name}}</td>
         <td>{{product?.price.priceUah}}</td>
         <td>{{product?.price.priceUsd}}</td>
@@ -98,23 +71,24 @@
               <label>Категория</label>
               <input type="text" placeholder="Категория" name="category" [(ngModel)]="newProduct.category"
                      #category="ngModel" required/><br>
-              <label>Ссылка на картинку</label>
-              <input type="text" placeholder="Ссылка" name="imgSrc" [(ngModel)]="newProduct.imgSrc" #imgSrc="ngModel"
-                     required/><br>
             </div>
             <div class="col-6">
               <label>Описание</label>
               <textarea name="description" id="" placeholder="Описание продукта..."
                         [(ngModel)]="newProduct.description" #description="ngModel" required></textarea>
             </div>
+            <div class="col-12">
+              <input *ngIf="!newProduct._id" type="file" (change)="fileChange($event)" name="file" accept="image/"  required>
+            </div>
+
           </div>
           <button class="btn btn-default" (click)="closeAddProduct()">Закрыть</button>
           <button *ngIf="!newProduct._id" [disabled]="name.invalid || (priceUah.invalid || priceUsd.invalid) ||
-                  article.invalid || category.invalid || imgSrc.invalid || description.invalid || (!newProduct.price.priceUah && !newProduct.price.priceUsd)"
+                  article.invalid || category.invalid || description.invalid || (!newProduct.price.priceUah && !newProduct.price.priceUsd)"
                   class="btn btn-default" (click)="addProduct()">Создать
           </button>
           <button *ngIf="newProduct._id" [disabled]="name.invalid || (priceUah.invalid || priceUsd.invalid) ||
-                  article.invalid || category.invalid || imgSrc.invalid || description.invalid || (!newProduct.price.priceUah && !newProduct.price.priceUsd)"
+                  article.invalid || category.invalid || description.invalid || (!newProduct.price.priceUah && !newProduct.price.priceUsd)"
                   class="btn btn-default" (click)="putProduct()">
             Сохранить изменения
           </button>
@@ -130,7 +104,7 @@
           <div class="row">
             <div class="col-6">
               <p>
-                <a href="{{choosenProduct.imgSrc}}"><img src="{{choosenProduct.imgSrc}}" alt="img"></a>
+                <img id="i" [src]="getChoosenImg(choosenProduct)" alt="img" height="100" width="100">
               </p>
             </div>
             <div class="col-6">

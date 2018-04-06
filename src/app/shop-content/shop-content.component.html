@@ -5,8 +5,7 @@
         <div class="col-6">
           <div class="order-product">
             <p>
-              <a href="{{choosenProduct.imgSrc}}"><img src="{{choosenProduct.imgSrc}}" alt="img" height="100"
-                                                       width="100"></a>
+                <img id="i" [src]="getChoosenImg(choosenProduct)" alt="img" height="100" width="100">
             </p>
             <p>Название: {{choosenProduct.name}}</p>
             <p *ngIf="choosenProduct.price.priceUah">Цена: {{choosenProduct.price.priceUah}} грн</p>
@@ -58,8 +57,10 @@
 
     <div class="wrapper-for-product container">
         <div class="row cproduct">
-          <div class="product col-3" *ngFor="let product of products">
-            <p><a href="{{product?.imgSrc}}"><img src="{{product?.imgSrc}}" alt="img" height="100" width="100"></a></p>
+          <div class="product col-3" *ngFor="let product of products; index as i" [attr.data-index]="i">
+            <p>
+                <img id="{{i + ''}}" [src]="getImg(product, i)" alt="img" height="100" width="100">
+            </p>
             <p>Название: {{product?.name}}</p>
             <p *ngIf="product?.price.priceUah">Цена: {{product?.price.priceUah}} грн</p>
             <p *ngIf="product?.price.priceUsd">Цена: {{product?.price.priceUsd}} usd</p>
