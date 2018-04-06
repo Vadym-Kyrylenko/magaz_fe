@@ -38,7 +38,6 @@ export class ProductsAdminComponent implements OnInit {
       description: '',
       article: '',
       category: '',
-      imgSrc: '',
       bufferImg: '',
       _id: ''
     };
@@ -189,7 +188,6 @@ export class ProductsAdminComponent implements OnInit {
       description: '',
       article: '',
       category: '',
-      imgSrc: '',
       _id: ''
     };
   }

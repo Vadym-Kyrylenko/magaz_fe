@@ -6,7 +6,6 @@ export class Product {
   public description: string;
   public article: string;
   public category: string;
-  public imgSrc: string;
   public bufferImg: string;
 
 
@@ -15,7 +14,6 @@ export class Product {
               description: string,
               article: string,
               category: string,
-              imgSrc: string,
               bufferImg: string
   ) {
 
@@ -28,7 +26,6 @@ export class Product {
     this.description = description;
     this.article = article;
     this.category = category;
-    this.imgSrc = imgSrc;
     this.bufferImg = bufferImg;
   }
 }
