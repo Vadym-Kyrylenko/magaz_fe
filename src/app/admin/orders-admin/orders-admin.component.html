@@ -26,8 +26,8 @@
         <!--<p>Описание: {{product?.description}}</p>-->
         <td>{{order?.article}}</td>
         <td>
-          <button (click)="deleteOrder(order._id)">Удалить</button>
-          <button (click)="choseOrder(order)">Просмотреть</button>
+          <button (click)="deleteOrder(order._id)"><a class="hidm">Удалить</a> <a class="icon-bin"></a></button>
+          <button (click)="choseOrder(order)"><a class="hidm">Просмотреть</a> <a class="icon-eye"></a></button>
         </td>
       </tr>
       </tbody>
