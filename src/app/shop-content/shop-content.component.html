@@ -29,9 +29,7 @@
                      [(ngModel)]="orderContacts.phone" #phone="ngModel"
                      required pattern="[0-9]{10}"/>
               <textarea name="textOrder" id="" cols="30" rows="10"
-                        placeholder="Коментарий к заказу..."
-                        [(ngModel)]="orderContacts.textOrder"></textarea>
-
+                        placeholder="Коментарий к заказу..." [(ngModel)]="orderContacts.textOrder"></textarea>
             </fieldset>
           </form>
         </div>
@@ -58,7 +56,7 @@
 
     <div class="wrapper-for-product container">
         <div class="row cproduct">
-          <div class="product col-3" *ngFor="let product of products; index as i" [attr.data-index]="i">
+          <div class="product col-lg-3 col-6" *ngFor="let product of products; index as i" [attr.data-index]="i">
             <p>
                 <!--<img id="{{i + ''}}" [src]="getImg(product, i)" alt="img" height="100" width="100">-->
               <img id="{{i + ''}}" [src]="product.imgSrc" alt="img" height="100" width="100">

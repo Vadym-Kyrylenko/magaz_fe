@@ -38,7 +38,7 @@ export class ProductsAdminComponent implements OnInit {
       description: '',
       article: '',
       category: '',
-      bufferImg: '',
+      imgSrc: '',
       _id: ''
     };
   }
@@ -138,7 +138,7 @@ export class ProductsAdminComponent implements OnInit {
     const products = this.newProduct;
     if (products.name && products.article && (products.price.priceUah || products.price.priceUsd) && products.description
       && products.category) {
-      delete products.bufferImg;
+
       const token = localStorage.getItem('token');
       this.httpService.putProduct(products, token).subscribe((data: any) => {
         if (data.message === 'Product edited') {

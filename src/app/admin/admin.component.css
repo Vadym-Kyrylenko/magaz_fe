@@ -8,12 +8,16 @@ body {
   vertical-align: text-bottom;
 }
 
+main{
+  overflow: auto;
+}
+
 /*
  * Sidebar
  */
 
 .sidebar {
-  position: fixed;
+  position: absolute;
   top: 0;
   bottom: 0;
   left: 0;
@@ -23,7 +27,6 @@ body {
 }
 
 .sidebar-sticky {
-  /*position: -webkit-sticky;*/
   position: absolute;
   top: 48px; /* Height of navbar */
   /*height: calc(100vh - 48px);*/
@@ -81,6 +84,7 @@ a.nav-link:hover {
   padding: .75rem 1rem;
   border-width: 0;
   border-radius: 0;
+  width: 100%;
 }
 
 .form-control-dark {
@@ -100,3 +104,28 @@ a.nav-link:hover {
 
 .border-top { border-top: 1px solid #e5e5e5; }
 .border-bottom { border-bottom: 1px solid #e5e5e5; }
+
+.container-fluid {
+  padding: 0;
+}
+
+.mobile {
+  display: none;
+}
+
+@media all and (max-width: 767px) {
+  .mobile {
+    display: inline-block;
+  }
+  .mobile button{
+    width: 200px;
+    height: 45px;
+    background-color: #343a40;
+    color: #ffffff;
+    position: center;
+  }
+  .navbar p{
+    display: none;
+  }
+
+}
