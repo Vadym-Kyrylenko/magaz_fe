@@ -6,7 +6,7 @@ export class Product {
   public description: string;
   public article: string;
   public category: string;
-  public bufferImg: string;
+  public imgSrc: string;
 
 
   constructor(name: string,
@@ -14,7 +14,7 @@ export class Product {
               description: string,
               article: string,
               category: string,
-              bufferImg: string
+              imgSrc: string
   ) {
 
     this.name = name;
@@ -26,6 +26,6 @@ export class Product {
     this.description = description;
     this.article = article;
     this.category = category;
-    this.bufferImg = bufferImg;
+    this.imgSrc = imgSrc;
   }
 }

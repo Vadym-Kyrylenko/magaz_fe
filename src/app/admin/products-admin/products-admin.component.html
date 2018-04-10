@@ -1,6 +1,6 @@
 <div>
   <h1>Продукты</h1>
-  <button (click)="createProduct()">СОЗДАТЬ НОВЫЙ ПРОДУКТ</button>
+  <button class="mbtn" (click)="createProduct()">СОЗДАТЬ НОВЫЙ ПРОДУКТ</button>
   <!--<div class="tkurs">Текущий действующий курс: {{products[0].price.rateUsd}}грн. = 1$</div>-->
   <br><br>
   <div class="kurs">
@@ -32,9 +32,9 @@
         <td>{{product?.price.priceUsd}}</td>
         <td>{{product?.article}}</td>
         <td>
-          <button (click)="deleteProduct(product._id)">Удалить</button>
-          <button (click)="choseProduct(product)">Просмотреть</button>
-          <button (click)="updateProduct(product)">Редактировать</button>
+          <button (click)="deleteProduct(product._id)"><a class="hidm">Удалить</a> <a class="icon-bin"></a></button>
+          <button (click)="choseProduct(product)"><a class="hidm">Просмотреть</a> <a class="icon-eye"></a></button>
+          <button (click)="updateProduct(product)"><a class="hidm">Редактировать</a> <a class="icon-pencil2"></a></button>
         </td>
       </tr>
       </tbody>

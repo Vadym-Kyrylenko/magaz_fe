@@ -70,7 +70,6 @@ export class ShopContentComponent implements OnInit {
 
   addOrder() {
     const order = Object.assign(this.orderContacts, this.choosenProduct);
-    delete order.bufferImg;
     const token = localStorage.getItem('token');
     this.postOrders(order, token);
     this.orderContacts = {
