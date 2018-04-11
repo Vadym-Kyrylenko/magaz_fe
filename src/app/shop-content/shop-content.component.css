@@ -67,6 +67,7 @@ button:hover{
   background-color: white;
   border-radius: 8px;
   border: 4px solid #c2c2c2;
+  overflow: visible;
 }
 .order-form{
   padding: 20px 40px 40px;
@@ -181,4 +182,14 @@ fieldset button{
   margin-bottom: 25px;
 }
 
+@media all and (max-width: 991px) {
+  .order {
+    width: 90%;
+    height: 90%;
+    overflow: scroll;
+  }
+  .order-product{
+    height: 100%;
+  }
+}
 
