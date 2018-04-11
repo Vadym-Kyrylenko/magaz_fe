@@ -261,6 +261,14 @@ tr td:last-child {
   float: right;
 }
 
+button{
+  background: #343a40;
+  color: #ffffff;
+}
+table button {
+  background: buttonface;
+  color: buttontext;
+}
 
 @media all and (max-width: 767px) {
   table button {
