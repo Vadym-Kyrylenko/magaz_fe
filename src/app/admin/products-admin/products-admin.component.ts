@@ -79,6 +79,7 @@ export class ProductsAdminComponent implements OnInit {
 
   closeProduct() {
     this.choosenProduct = null;
+    this.file = null;
   }
 
   fileChange(event) {
@@ -103,14 +104,16 @@ export class ProductsAdminComponent implements OnInit {
 
   postImg (img: any) {
     const fd = new FormData();
-    console.log(img);
+    // console.log(img);
+    // console.log(this.imgName);
     fd.append(this.imgName, img);
-
     const token = localStorage.getItem('token');
     this.httpService.postImg(fd, token).subscribe((data: any) => {
       this.done = true;
       this.file = null;
       this.imgName = '';
+      // console.log(this.file);
+      // console.log(this.imgName);
       this.getProducts();
     });
   }
@@ -120,7 +123,7 @@ export class ProductsAdminComponent implements OnInit {
     const token = localStorage.getItem('token');
     this.httpService.postProduct(products, token).subscribe((data: any) => {
       this.done = true;
-      console.dir(data.product.article);
+      // console.dir(data.product.article);
 
       this.imgName = data.product.article;
 
@@ -132,6 +135,7 @@ export class ProductsAdminComponent implements OnInit {
         this.feedback.product = data.product;
       } else if (data.message === 'Product not created') {
         this.feedback.mess = 2;
+        this.getProducts();
       }
     });
   }
@@ -144,7 +148,10 @@ export class ProductsAdminComponent implements OnInit {
       const token = localStorage.getItem('token');
       this.httpService.putProduct(products, token).subscribe((data: any) => {
         if (data.message === 'Product edited') {
-          if (this.file !== null) {
+          // console.dir(products);
+          // console.dir(this.file);
+          if (this.file) {
+            // console.log('this.file ' + this.file + ' but works');
             this.imgName = data.product.article;
             this.postImg(this.file);
           }
@@ -154,8 +161,8 @@ export class ProductsAdminComponent implements OnInit {
         } else if (data.message === 'Product not edited') {
           this.done = true;
           this.feedback.mess = 2;
+          this.getProducts();
         }
-        this.getProducts();
       });
     }
     this.choosenAddProduct = false;
