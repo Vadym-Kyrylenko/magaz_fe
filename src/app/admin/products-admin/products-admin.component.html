@@ -84,12 +84,16 @@
 
           </div>
           <button class="btn btn-default" (click)="closeAddProduct()">Закрыть</button>
-          <button *ngIf="!newProduct._id" [disabled]="name.invalid || (priceUah.invalid || priceUsd.invalid) ||
-                  article.invalid || category.invalid || description.invalid || (!newProduct.price.priceUah && !newProduct.price.priceUsd)"
+          <button *ngIf="!newProduct._id"
+                  [disabled]="name.invalid || (priceUah.invalid || priceUsd.invalid) ||
+                  article.invalid || category.invalid || description.invalid ||
+                   (!newProduct.price.priceUah && !newProduct.price.priceUsd) || !file"
                   class="btn btn-default" (click)="addProduct()">Создать
           </button>
-          <button *ngIf="newProduct._id" [disabled]="name.invalid || (priceUah.invalid || priceUsd.invalid) ||
-                  article.invalid || category.invalid || description.invalid || (!newProduct.price.priceUah && !newProduct.price.priceUsd)"
+          <button *ngIf="newProduct._id"
+                  [disabled]="name.invalid || (priceUah.invalid || priceUsd.invalid) ||
+                  article.invalid || category.invalid || description.invalid ||
+                  (!newProduct.price.priceUah && !newProduct.price.priceUsd)"
                   class="btn btn-default" (click)="putProduct()">
             Сохранить изменения
           </button>
