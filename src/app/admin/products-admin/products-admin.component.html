@@ -78,8 +78,8 @@
                         [(ngModel)]="newProduct.description" #description="ngModel" required></textarea>
             </div>
             <div class="col-12">
-              <!--<input *ngIf="!newProduct._id" type="file" (change)="fileChange($event)" name="file" accept="image/"  required>-->
-              <input type="file" (change)="fileChange($event)" name="file" accept="image/"  required>
+              <input *ngIf="!newProduct._id" type="file" (change)="fileChange($event)" name="file" accept="image/"  required>
+              <input *ngIf="newProduct._id" type="file" (change)="fileChange($event)" name="file" accept="image/">
             </div>
 
           </div>
