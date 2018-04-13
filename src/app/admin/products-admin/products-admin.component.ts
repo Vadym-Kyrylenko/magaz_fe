@@ -109,6 +109,8 @@ export class ProductsAdminComponent implements OnInit {
     const token = localStorage.getItem('token');
     this.httpService.postImg(fd, token).subscribe((data: any) => {
       this.done = true;
+      this.file = null;
+      this.imgName = '';
       this.getProducts();
     });
   }
@@ -142,6 +144,10 @@ export class ProductsAdminComponent implements OnInit {
       const token = localStorage.getItem('token');
       this.httpService.putProduct(products, token).subscribe((data: any) => {
         if (data.message === 'Product edited') {
+          if (this.file !== null) {
+            this.imgName = data.product.article;
+            this.postImg(this.file);
+          }
           this.done = true;
           this.feedback.mess = 3;
           this.feedback.product = data.product;
@@ -158,7 +164,6 @@ export class ProductsAdminComponent implements OnInit {
   deleteProduct(product) {
     const token = localStorage.getItem('token');
     this.httpService.deleteProducts(product, token).subscribe((data: any) => {
-
       if (data.productDeleted === true) {
         this.done = true;
         this.feedback.mess = 'del';
