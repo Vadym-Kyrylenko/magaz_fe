@@ -29,7 +29,6 @@ main{
 .sidebar-sticky {
   position: absolute;
   top: 48px; /* Height of navbar */
-  /*height: calc(100vh - 48px);*/
   padding-top: .5rem;
   overflow-x: hidden;
   overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
@@ -90,7 +89,7 @@ a.nav-link:hover {
 .form-control-dark {
   color: #fff;
   background-color: rgba(255, 255, 255, .1);
-  border-color: rgba(255, 255, 255, .1);
+  border-color: rgba(255, 255, 255, .2);
 }
 
 .form-control-dark:focus {
@@ -112,8 +111,7 @@ a.nav-link:hover {
 .mobile {
   display: none;
 }
-
-@media all and (max-width: 767px) {
+@media all and (max-width: 991px) {
   .mobile {
     display: inline-block;
   }
@@ -122,10 +120,10 @@ a.nav-link:hover {
     height: 45px;
     background-color: #343a40;
     color: #ffffff;
-    position: center;
   }
+}
+@media all and (max-width: 767px) {
   .navbar p{
     display: none;
   }
-
 }

@@ -16,18 +16,16 @@
       </thead>
       <tbody>
       <tr *ngFor="let order of orders; index as i" [attr.data-index]="i">
-        <!--<td><img id="{{i + ''}}" [src]="getImg(order, i)" alt="img" height="100" width="100"></td>-->
         <td><img id="{{i + ''}}" [src]="order.imgSrc" alt="img" height="100" width="100"></td>
         <td>{{order?.name}}</td>
         <td>{{order?.nameCustomer}}</td>
         <td>{{order?.phone}}</td>
         <td>{{order?.price.priceUah}}</td>
         <td>{{order?.price.priceUsd}}</td>
-        <!--<p>Описание: {{product?.description}}</p>-->
         <td>{{order?.article}}</td>
         <td>
-          <button (click)="deleteOrder(order._id)"><a class="hidm">Удалить</a> <a class="icon-bin"></a></button>
-          <button (click)="choseOrder(order)"><a class="hidm">Просмотреть</a> <a class="icon-eye"></a></button>
+          <button (click)="deleteOrder(order._id)"><a class="hidm">Удалить</a> <img src="assets/icons/PNG/bin.png" alt=""></button>
+          <button (click)="choseOrder(order)"><a class="hidm">Просмотреть</a> <img src="assets/icons/PNG/eye.png" alt=""></button>
         </td>
       </tr>
       </tbody>
@@ -40,8 +38,7 @@
         <div class="row">
           <div class="col-12">
           <p>
-            <!--<img id="i" [src]="getChoosenImg(choosenOrder)" alt="img" height="100" width="100">-->
-            <img id="{{i + ''}}" [src]="choosenOrder.imgSrc" alt="img" height="100" width="100">
+            <img [src]="choosenOrder.imgSrc" alt="img">
             </p>
           </div>
           <div class="col-6">

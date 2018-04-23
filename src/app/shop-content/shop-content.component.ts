@@ -17,7 +17,7 @@ export class ShopContentComponent implements OnInit {
   orderContacts: IOrderContacts;
   choosenProduct: Product;
   feedback: any;
-  done   = false;
+  done = false;
 
 
   constructor(private httpService: CommunicationService,
@@ -43,21 +43,6 @@ export class ShopContentComponent implements OnInit {
       this.products = [];
       this.products = data;
     });
-  }
-
-  getImg(product, i) {
-    const im: any = document.getElementById(i + '');
-    if (im) {
-      const bl = new Blob([new Uint8Array(JSON.parse(product.bufferImg).data)], {type: 'image/jpg'});
-      im.src = URL.createObjectURL(bl);
-    }
-  }
-  getChoosenImg(product) {
-    const im: any = document.getElementById( 'i');
-    if (im) {
-      const bl = new Blob([new Uint8Array(JSON.parse(product.bufferImg).data)], {type: 'image/jpg'});
-      im.src = URL.createObjectURL(bl);
-    }
   }
 
   choseProduct(product) {

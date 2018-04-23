@@ -11,6 +11,7 @@ export class Order {
   public description: string;
   public article: string;
   public category: string;
+  public imgSrc: string;
 
 
   constructor(nameCustomer: string,
@@ -22,7 +23,8 @@ export class Order {
               price: IPrice,
               description: string,
               article: string,
-              category: string) {
+              category: string,
+              imgSrc: string) {
 
     this.nameCustomer = nameCustomer;
     this.email = email;
@@ -37,5 +39,6 @@ export class Order {
     this.description = description;
     this.article = article;
     this.category = category;
+    this.imgSrc = imgSrc;
   }
 }
