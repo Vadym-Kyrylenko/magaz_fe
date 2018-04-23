@@ -31,19 +31,13 @@ export class LoginComponent {
     };
   }
 
-
-
   logIn() {
     const user = this.user;
     this.httpService.logIn(user).subscribe((data: any) => {
-      console.dir(data);
       this.token = data.token;
       this.done = true;
-      console.log(this.done);
-      console.log(this.token);
       localStorage.setItem('token', this.token);
       this.router.navigate(['/admin']);
-      console.dir(data);
 
     }, (error: any) => {
       console.dir(error);

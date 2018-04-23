@@ -1,11 +1,9 @@
-var express = require('express');
-var server = express();
+const express = require('express');
+const server = express();
 server.use(require('connect-history-api-fallback')());
 server.use('/', express.static(__dirname + '/dist/'));
-var instance = server.listen(5000, function () {
-
-    var host = instance.address().address;
-    var port = instance.address().port;
-    console.log("Example app listening at http://%s:%s", host, port)
-
+const instance = server.listen(5000, function () {
+  const host = instance.address().address;
+  const port = instance.address().port;
+  console.log("Example app listening at http://%s:%s", host, port);
 });

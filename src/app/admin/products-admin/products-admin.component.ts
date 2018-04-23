@@ -43,7 +43,6 @@ export class ProductsAdminComponent implements OnInit {
     };
   }
 
-
   ngOnInit() {
     this.getProducts();
   }
@@ -52,25 +51,8 @@ export class ProductsAdminComponent implements OnInit {
     this.storeModel.getProducts().subscribe((data: Product[]) => {
       this.products = [];
       this.products = data;
-      console.dir(data);
       return this.currentRate = this.products[0].price.rateUsd;
     });
-  }
-
-
-  getImg(product, i) {
-      const im: any = document.getElementById(i + '');
-      if (im) {
-    const bl = new Blob([new Uint8Array(JSON.parse(product.bufferImg).data)], {type: 'image/jpg'});
-      im.src = URL.createObjectURL(bl);
-    }
-  }
-  getChoosenImg(product) {
-    const im: any = document.getElementById( 'i');
-    if (im) {
-      const bl = new Blob([new Uint8Array(JSON.parse(product.bufferImg).data)], {type: 'image/jpg'});
-      im.src = URL.createObjectURL(bl);
-    }
   }
 
   choseProduct(product) {
@@ -91,7 +73,6 @@ export class ProductsAdminComponent implements OnInit {
   }
 
   addProduct() {
-    console.dir(this.file);
     const products = this.newProduct;
 
     if (products.name && products.article && (products.price.priceUah || products.price.priceUsd) && products.description
@@ -104,26 +85,20 @@ export class ProductsAdminComponent implements OnInit {
 
   postImg (img: any) {
     const fd = new FormData();
-    // console.log(img);
-    // console.log(this.imgName);
     fd.append(this.imgName, img);
     const token = localStorage.getItem('token');
     this.httpService.postImg(fd, token).subscribe((data: any) => {
       this.done = true;
       this.file = null;
       this.imgName = '';
-      // console.log(this.file);
-      // console.log(this.imgName);
       this.getProducts();
     });
   }
 
   postProduct(products: any) {
-
     const token = localStorage.getItem('token');
     this.httpService.postProduct(products, token).subscribe((data: any) => {
       this.done = true;
-      // console.dir(data.product.article);
 
       this.imgName = data.product.article;
 
@@ -148,10 +123,7 @@ export class ProductsAdminComponent implements OnInit {
       const token = localStorage.getItem('token');
       this.httpService.putProduct(products, token).subscribe((data: any) => {
         if (data.message === 'Product edited') {
-          // console.dir(products);
-          // console.dir(this.file);
           if (this.file) {
-            // console.log('this.file ' + this.file + ' but works');
             this.imgName = data.product.article;
             this.postImg(this.file);
           }
@@ -251,7 +223,6 @@ export class ProductsAdminComponent implements OnInit {
   resetRate() {
     this.getProducts();
     return this.currentRate = this.products[0].price.rateUsd;
-
   }
 
 }
