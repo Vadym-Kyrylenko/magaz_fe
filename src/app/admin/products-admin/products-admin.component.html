@@ -1,0 +1,150 @@
+<div>
+  <h1>Продукты</h1>
+  <button class="mbtn" (click)="createProduct()">СОЗДАТЬ НОВЫЙ ПРОДУКТ</button>
+  <!--<div class="tkurs">Текущий действующий курс: {{products[0].price.rateUsd}}грн. = 1$</div>-->
+  <br><br>
+  <div class="kurs">
+    <label>Курс доллара: </label><input type="number" name="kurs" [(ngModel)]="currentRate">
+    <button (click)="changeRate()">Пересчитать</button>
+    <button (click)="saveChangeRate()">Сохранить на сервере</button>
+    <button (click)="resetRate()">Сбросить</button>
+  </div>
+  <div class="row">
+    <table>
+      <thead>
+      <tr>
+        <th></th>
+        <th>Название</th>
+        <th>Цена в грн</th>
+        <th>Цена в долл</th>
+        <th>Артикул</th>
+        <th>Действие</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let product of products; index as i" [attr.data-index]="i">
+        <td>
+          <img id="{{i + ''}}" [src]="product.imgSrc" alt="img">
+        </td>
+        <td>{{product?.name}}</td>
+        <td>{{product?.price.priceUah}}</td>
+        <td>{{product?.price.priceUsd}}</td>
+        <td>{{product?.article}}</td>
+        <td>
+          <button (click)="deleteProduct(product._id)"><a class="hidm">Удалить</a> <img src="assets/icons/PNG/bin.png" alt=""></button>
+          <button (click)="choseProduct(product)"><a class="hidm">Просмотреть</a> <img src="assets/icons/PNG/eye.png" alt=""></button>
+          <button (click)="updateProduct(product)"><a class="hidm">Редактировать</a> <img src="assets/icons/PNG/pencil2.png" alt=""></button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="wrapper" *ngIf="choosenAddProduct == true">
+    <form class="product-form" action="#">
+      <div class="col-12">
+        <fieldset>
+          <div>
+            <h2 *ngIf="!newProduct._id">Создать продукт</h2>
+            <h2 *ngIf="newProduct._id">Редактировать продукт</h2>
+            <p *ngIf="(newProduct.price.priceUah || newProduct.price.priceUsd)"><br></p>
+            <p *ngIf="(!newProduct.price.priceUah && !newProduct.price.priceUsd)" style="color: red">Обязательное
+              заполнение цены в одной из валют, по выбору</p>
+          </div>
+          <div class="row">
+            <div class="col-6">
+              <label>Название</label>
+              <input type="text" placeholder="Название" name="name" [(ngModel)]="newProduct.name" #name="ngModel"
+                     required/><br>
+              <label>Цена в гривне</label>
+              <input type="text" placeholder="Цена" name="priceUah" [(ngModel)]="newProduct.price.priceUah"
+                     #priceUah="ngModel"
+                     pattern="^[0-9]+$"/><br>
+              <label>Цена в долларах</label>
+              <input type="text" placeholder="Цена" name="priceUsd" [(ngModel)]="newProduct.price.priceUsd"
+                     #priceUsd="ngModel"
+                     pattern="^[0-9]+$"/><br>
+              <label>Артикул</label>
+              <input type="text" placeholder="Артикул" name="article" [(ngModel)]="newProduct.article"
+                     #article="ngModel" required/><br>
+              <label>Категория</label>
+              <input type="text" placeholder="Категория" name="category" [(ngModel)]="newProduct.category"
+                     #category="ngModel" required/><br>
+            </div>
+            <div class="col-6">
+              <label>Описание</label>
+              <textarea name="description" id="" placeholder="Описание продукта..."
+                        [(ngModel)]="newProduct.description" #description="ngModel" required></textarea>
+            </div>
+            <div class="col-12">
+              <input *ngIf="!newProduct._id" type="file" (change)="fileChange($event)" name="file" accept="image/"  required>
+              <input *ngIf="newProduct._id" type="file" (change)="fileChange($event)" name="file" accept="image/">
+            </div>
+
+          </div>
+          <button class="btn btn-default" (click)="closeAddProduct()">Закрыть</button>
+          <button *ngIf="!newProduct._id"
+                  [disabled]="name.invalid || (priceUah.invalid || priceUsd.invalid) ||
+                  article.invalid || category.invalid || description.invalid ||
+                   (!newProduct.price.priceUah && !newProduct.price.priceUsd) || !file"
+                  class="btn btn-default" (click)="addProduct()">Создать
+          </button>
+          <button *ngIf="newProduct._id"
+                  [disabled]="name.invalid || (priceUah.invalid || priceUsd.invalid) ||
+                  article.invalid || category.invalid || description.invalid ||
+                  (!newProduct.price.priceUah && !newProduct.price.priceUsd)"
+                  class="btn btn-default" (click)="putProduct()">
+            Сохранить изменения
+          </button>
+        </fieldset>
+      </div>
+    </form>
+  </div>
+
+  <div class="wrapper" *ngIf="choosenProduct" (click)="fgh($event)">
+    <div class="product">
+      <div class="row row-flex">
+        <div class="show-product">
+          <div class="row">
+            <div class="col-6">
+              <p>
+                <img [src]="choosenProduct.imgSrc" alt="img">
+              </p>
+            </div>
+            <div class="col-6">
+              <p>Название: {{choosenProduct.name}}</p>
+              <p *ngIf="choosenProduct.price.priceUah">Цена: {{choosenProduct.price.priceUah}} грн</p>
+              <p *ngIf="choosenProduct.price.priceUsd">Цена: {{choosenProduct.price.priceUsd}} usd</p>
+              <p>Артикул: {{choosenProduct.article}}</p>
+              <p>Категория: {{choosenProduct.category}}</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <p>Описание: {{choosenProduct.description}}</p>
+              <button (click)="closeProduct()">Закрыть</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrapper-for-product-answer">
+    <div *ngIf="done === true" class="product-answer">
+      <div *ngIf="feedback.mess === 1">
+        <h2>Продукт {{feedback.product.name}}, сохранен!</h2>
+      </div>
+      <div *ngIf="feedback.mess === 2">
+        <p class="error">Что-то пошло не так. Пожалуйста, попробуйте снова!</p>
+      </div>
+      <div *ngIf="feedback.mess === 3">
+        <h2>Изменения сохранены!</h2>
+      </div>
+      <div *ngIf="feedback.mess === 'del'">
+        <h2>Продукт удален!</h2>
+      </div>
+      <button (click)="closeProductAnswer()">Закрыть</button>
+    </div>
+  </div>
+</div>

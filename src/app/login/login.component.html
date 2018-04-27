@@ -1,0 +1,24 @@
+<div class="lf">
+  <div>
+    <div class="top-bar">
+      <a href="#" target="_blank">Главная</a>
+      <span class="right">
+        <a onclick="history.back()"><strong>Вернуться назад</strong></a>
+        </span>
+    </div>
+
+    <div id="login-form">
+      <h1>АВТОРИЗАЦИЯ</h1>
+      <fieldset>
+        <form action="#">
+          <input type="email" name="email" placeholder="Введите Ваш email адрес..." required [(ngModel)]="user.email" />
+          <input type="password" name="password" placeholder="Ваш сложный пароль..." required [(ngModel)]="user.password" />
+          <div *ngIf="feedback.mess === 2" style="color: red">Неправильный пароль</div>
+          <button (click)="logIn()">Войти</button><button onclick="location.href='/registration'">Регистрация</button>
+        </form>
+      </fieldset>
+
+
+    </div>
+  </div>
+</div>

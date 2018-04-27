@@ -1,0 +1,185 @@
+.order-form input.ng-touched.ng-invalid {border:solid red 2px;}
+.order-form input.ng-touched.ng-valid {border:solid green 2px;}
+
+
+.bg{
+  background-image: url("../../assets/images/background_black.jpg");
+  width: 100%;
+  height: 100%;
+  padding-bottom: 5px;
+  color: #000;
+  line-height: 10px;
+}
+
+body{
+}
+button {
+  display: block;
+  max-width: 115px;
+  text-transform: uppercase;
+  color: #fff;
+  border-radius: 2px;
+  padding: 10px;
+  font-size: 18px;
+  border: 0;
+  line-height: 26px;
+  margin: 0 auto;
+  background: #343a40;
+  cursor: pointer;
+}
+
+.product button{
+  vertical-align: center;
+}
+
+button:hover{
+  opacity: 0.7;
+  color: green;
+}
+
+.wrapper{
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0,0,0, 0.5);
+  z-index: 1050;
+}
+.order{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  color: #000;
+  background-color: white;
+  border-radius: 8px;
+  border: 4px solid #c2c2c2;
+  overflow: visible;
+}
+.order-form{
+  padding: 20px 40px 40px;
+  background: white;
+  border-radius: 8px;
+  top: 50%;
+  left:25%;
+  z-index: 20;
+}
+.order-form h2{
+  margin: 0 0 20px;
+  color: dimgrey;
+  text-align: center;
+}
+.order-form input[type=text],
+.order-form input[type=email],
+.order-form select,
+.order-form textarea{
+  display: block;
+  width: 100%;
+  background: #f9f6f0;
+  border: 0;
+  padding: 13px 20px;
+  margin: 0 0 20px;
+  color: #000;
+  font-size: 16px;
+  line-height: 21px;
+  font-style: italic;
+  border-radius: 3px;
+}
+.order-form textarea{
+  max-height: 300px;
+  min-height: 50px;
+  resize: vertical;
+}
+.order-product{
+  height: 515px;
+  padding: 20px 40px 40px;
+  background: white;
+  border-radius: 8px;
+  z-index: 20;
+  top: 50%;
+  left:50%;
+  text-align: center;
+  line-height: 12px;
+}
+fieldset button{
+  display: inline-block;
+  float: right;
+  margin-right: 40px;
+}
+
+.order-answer{
+  text-align: center;
+  position: fixed;
+  border: #c9c9c9 2px solid;
+  border-radius: 3px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 800px;
+  color: #000;
+  z-index: 1049;
+  background: aquamarine;
+  padding: 1em;
+}
+.order-answer .error{
+  background: red;
+  color: black;
+}
+.order-answer button{
+  display: block;
+  max-width: 100px;
+  text-transform: uppercase;
+  color: #fff;
+  border-radius: 3px;
+  padding: 0;
+  font-size: 18px;
+  border: 0;
+  line-height: 26px;
+  margin: 0 auto;
+  background: coral;
+  cursor: pointer;
+}
+
+.product {
+  width: 100%;
+  display: block;
+  margin: 10px;
+  padding: 10px;
+  justify-content: space-between;
+  line-height: 12px;
+  background-color: white;
+  border-radius: 4px;
+  border: 5px solid #c2c2c2;
+}
+
+.wrapper-for-product{
+  text-align: center;
+}
+
+.cproduct{
+  justify-content: center;
+}
+
+.for-btn{
+  text-align: center;
+}
+
+.cbtn{
+  display: inline-block;
+  margin-bottom: 25px;
+}
+
+@media all and (max-width: 991px) {
+  .order {
+    width: 90%;
+    height: 90%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
+  .order-product{
+    height: 100%;
+  }
+}
+
